@@ -2,6 +2,7 @@ import { ClipboardList } from 'lucide-react';
 import PageTitle from '../components/PageTitle.jsx';
 import { tests } from '../data/tests.js';
 import { scoreTest, isCorrect } from '../utils/testScoring.js';
+import MathExerciseDiagram from '../components/MathExerciseDiagram.jsx';
 
 export default function TestsPage({ progress, onAnswer, onSubmit, onReset }) {
   return (
@@ -62,6 +63,7 @@ function Question({ testId, index, question, answer, submitted, onAnswer }) {
   return (
     <div className={`question ${correct ? 'correct' : ''} ${wrong ? 'wrong' : ''}`}>
       <strong>{index + 1}. {question.question}</strong>
+      {question.diagram && <MathExerciseDiagram type={question.diagram} />}
       {question.formula && <div className="formula hint" dir="ltr">{question.formula}</div>}
 
       {question.type === 'choice' && (

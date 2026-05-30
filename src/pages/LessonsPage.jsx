@@ -1,9 +1,11 @@
 import { useMemo, useState } from 'react';
-import { BookOpen, CheckCircle2, Lightbulb, PlayCircle, Target } from 'lucide-react';
+import { BookOpen, Calculator, CheckCircle2, Lightbulb, PlayCircle, Target } from 'lucide-react';
 import PageTitle from '../components/PageTitle.jsx';
 import LessonDiagram from '../components/LessonDiagram.jsx';
+import MathExerciseDiagram from '../components/MathExerciseDiagram.jsx';
 import { courseLessons } from '../data/courseLessons.js';
 import { modules } from '../data/modules.js';
+import { mathExercises } from '../data/mathExercises.js';
 
 export default function LessonsPage() {
   const [selectedModuleId, setSelectedModuleId] = useState('m0');
@@ -29,6 +31,12 @@ export default function LessonsPage() {
     setSelectedLessonId(lessonId);
     setRevealedPractice(false);
   }
+
+  const lessonMathExercises = useMemo(() => {
+    const exact = mathExercises.filter((exercise) => exercise.lessonId === selectedLesson?.id);
+    if (exact.length) return exact;
+    return mathExercises.filter((exercise) => exercise.moduleId === selectedModuleId).slice(0, 2);
+  }, [selectedLesson?.id, selectedModuleId]);
 
   return (
     <section className="page-stack lessons-reader-page">
@@ -136,6 +144,43 @@ export default function LessonsPage() {
                 {revealedPractice && <div className="practice-hint">תשובה טובה צריכה להיות לפי סדר בדיקות, לא לפי ניחוש. קודם סימפטום, אחר כך מערכת, ואז בדיקה שאפשר למדוד.</div>}
               </div>
             </section>
+
+
+            {lessonMathExercises.length > 0 && (
+              <section className="lesson-section-card math-practice-section">
+                <div className="math-practice-heading">
+                  <div>
+                    <span className="badge"><Calculator size={14} /> תרגילים מתמטיים</span>
+                    <h3>תרגול כמו בבית ספר</h3>
+                    <p>כל תרגיל מתחיל מסרטוט, ממשיך לנתונים, ואז להצבה בנוסחה. לא מדלגים ישר לתשובה.</p>
+                  </div>
+                </div>
+                <div className="math-exercise-grid">
+                  {lessonMathExercises.map((exercise) => (
+                    <article className="math-exercise-card" key={exercise.id}>
+                      <h4>{exercise.title}</h4>
+                      <MathExerciseDiagram type={exercise.type} />
+                      <div className="math-exercise-content">
+                        <div>
+                          <strong>נתונים</strong>
+                          <ul>{exercise.given.map((item) => <li key={item}>{item}</li>)}</ul>
+                        </div>
+                        <div>
+                          <strong>מה צריך למצוא?</strong>
+                          <p>{exercise.find}</p>
+                        </div>
+                        <div className="school-formula" dir="ltr">{exercise.formula}</div>
+                        <details className="math-solution">
+                          <summary>הצג פתרון</summary>
+                          <ol>{exercise.solution.map((step) => <li key={step}>{step}</li>)}</ol>
+                          <div className="final-answer">תשובה: {exercise.answer}</div>
+                        </details>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            )}
 
             <section className="lesson-section-card mini-quiz-card">
               <h3>בדיקת הבנה קצרה</h3>

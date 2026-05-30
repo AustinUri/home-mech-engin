@@ -1994,3 +1994,522 @@ button {
   .flow-step:not(:last-child)::after { display: none; }
   .circuit-clean, .torque-clean { transform: scale(.9); transform-origin: center; }
 }
+
+/* -----------------------------
+   Lesson expansion + corrected RTL arrows
+   The learning sequence in Hebrew runs right-to-left, so arrows point left.
+------------------------------ */
+.rtl-flow-row {
+  direction: rtl;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.rtl-flow-piece {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.flow-block {
+  width: 148px;
+  min-height: 128px;
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 22px;
+  padding: 14px;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(15,23,42,.06);
+}
+
+.flow-block span {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: #111827;
+  color: #facc15;
+  font-weight: 900;
+}
+
+.flow-block strong { font-size: 1.02rem; }
+.flow-block small { color: var(--muted); line-height: 1.45; }
+
+.rtl-arrow {
+  color: var(--orange);
+  font-size: 2.2rem;
+  font-weight: 1000;
+  line-height: 1;
+}
+
+/* Disable the old pseudo-arrow so arrows do not appear backwards twice. */
+.flow-step:not(:last-child)::after { content: none !important; }
+
+.energy-split {
+  width: 100%;
+  max-width: 720px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "input input"
+    "useful loss";
+  gap: 18px;
+  align-items: center;
+  text-align: center;
+}
+.energy-input,
+.energy-branch {
+  border-radius: 24px;
+  padding: 22px;
+  font-weight: 1000;
+  border: 2px solid var(--line);
+  background: white;
+}
+.energy-input { grid-area: input; background: #eff6ff; border-color: #93c5fd; }
+.energy-branch.useful { grid-area: useful; background: #f0fdf4; border-color: #86efac; }
+.energy-branch.loss { grid-area: loss; background: #fff7ed; border-color: #fdba74; }
+.energy-input span,
+.energy-branch span { display: block; margin-top: 8px; font-size: 1.6rem; }
+
+.split-system-diagram,
+.series-parallel,
+.prop-diagram {
+  width: 100%;
+  max-width: 720px;
+  display: grid;
+  gap: 18px;
+}
+.split-system-diagram {
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "fuel spark"
+    "result result";
+}
+.system-column,
+.system-result,
+.circuit-mini,
+.prop-circle,
+.prop-blade {
+  border: 2px solid var(--line);
+  border-radius: 24px;
+  background: white;
+  padding: 22px;
+  text-align: center;
+  font-weight: 900;
+  box-shadow: 0 10px 24px rgba(15,23,42,.06);
+}
+.system-column span,
+.prop-blade span,
+.circuit-mini span { display: block; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+.system-column.fuel { grid-area: fuel; background: #fff7ed; border-color: #fdba74; }
+.system-column.spark { grid-area: spark; background: #eff6ff; border-color: #93c5fd; }
+.system-result { grid-area: result; background: #f0fdf4; border-color: #86efac; }
+
+.series-parallel { grid-template-columns: 1fr 1fr; }
+.mini-line,
+.mini-branches {
+  direction: ltr;
+  margin-top: 14px;
+  background: #0f172a;
+  color: white;
+  border-radius: 16px;
+  padding: 14px;
+  font-weight: 900;
+  line-height: 1.7;
+}
+
+.clean-circuit-diagram {
+  width: 100%;
+  max-width: 720px;
+  height: 280px;
+  position: relative;
+  direction: rtl;
+}
+.battery-node,
+.consumer-node {
+  position: absolute;
+  top: 92px;
+  width: 150px;
+  height: 100px;
+  border-radius: 24px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-weight: 1000;
+  border: 3px solid;
+}
+.battery-node { right: 24px; background: #eff6ff; border-color: #2563eb; }
+.consumer-node { left: 24px; background: #fff7ed; border-color: #f97316; }
+.battery-node span,
+.consumer-node span { display: block; color: var(--muted); font-size: .9rem; }
+.wire {
+  position: absolute;
+  right: 174px;
+  left: 174px;
+  height: 5px;
+  background: #334155;
+  border-radius: 999px;
+}
+.top-wire { top: 116px; }
+.bottom-wire { top: 170px; }
+.flow-label {
+  position: absolute;
+  right: 205px;
+  left: 205px;
+  top: 48px;
+  text-align: center;
+  color: #15803d;
+  font-weight: 1000;
+}
+.flow-label::after {
+  content: '←';
+  display: block;
+  color: var(--orange);
+  font-size: 2rem;
+}
+
+.gear-clean.rtl-gear-flow { direction: rtl; }
+.gear-link { transform: none !important; }
+
+.fixed-arrow .force-arrow::after {
+  position: relative;
+}
+.fixed-arrow .force-arrow::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  margin: 0 auto -4px;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 14px solid #b91c1c;
+  transform: translateY(103px);
+}
+
+.prop-diagram {
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+.prop-circle {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  margin: auto;
+  display: grid;
+  place-items: center;
+  background: #eff6ff;
+  border-color: #2563eb;
+  position: relative;
+}
+.prop-circle::after {
+  content: '';
+  position: absolute;
+  width: 170px;
+  height: 4px;
+  background: #2563eb;
+}
+.prop-blade {
+  min-height: 160px;
+  display: grid;
+  place-items: center;
+  background: #fff7ed;
+  border-color: #fdba74;
+  transform: skewX(-8deg);
+}
+
+.lesson-module-button small,
+.lesson-toc-item small {
+  line-height: 1.35;
+}
+
+@media (max-width: 900px) {
+  .rtl-flow-piece { width: 100%; justify-content: center; }
+  .rtl-arrow { display: none; }
+  .split-system-diagram,
+  .series-parallel,
+  .prop-diagram,
+  .energy-split {
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+  }
+  .system-column.fuel,
+  .system-column.spark,
+  .system-result,
+  .energy-input,
+  .energy-branch.useful,
+  .energy-branch.loss { grid-area: auto; }
+  .clean-circuit-diagram { transform: scale(.9); transform-origin: center; }
+}
+
+/* -----------------------------
+   Product review improvements: cleaner lessons + school math practice
+------------------------------ */
+:root { color-scheme: light; }
+body, #root, .app-shell { background: #f5f1e8 !important; color: var(--ink) !important; }
+.panel, .full-lesson-panel, .lesson-table-of-contents, .lesson-module-strip, .test-card, .question {
+  background: rgba(255,255,255,.96) !important;
+  color: var(--ink) !important;
+}
+
+.lesson-reader-layout {
+  grid-template-columns: minmax(260px, 300px) minmax(0, 1fr) !important;
+}
+
+.full-lesson-panel {
+  max-width: 980px;
+  margin-inline: auto;
+}
+
+.lesson-core-grid {
+  grid-template-columns: 1fr !important;
+}
+
+.lesson-diagram-frame {
+  max-width: 920px;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.lesson-diagram-body {
+  min-height: 430px !important;
+  padding: 30px !important;
+}
+
+.lesson-steps-grid {
+  grid-template-columns: repeat(2, minmax(260px, 1fr)) !important;
+}
+
+.lesson-step-card {
+  background: #ffffff !important;
+}
+
+.math-practice-section {
+  background: linear-gradient(135deg, #ffffff, #f8fafc) !important;
+  border-color: #bfdbfe !important;
+}
+
+.math-practice-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.math-practice-heading h3 {
+  margin: 12px 0 6px;
+  font-size: 1.45rem;
+}
+
+.math-practice-heading p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.math-exercise-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.math-exercise-card {
+  border: 1px solid var(--line);
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 18px;
+  box-shadow: 0 14px 32px rgba(15,23,42,.07);
+}
+
+.math-exercise-card h4 {
+  margin: 0 0 14px;
+  font-size: 1.15rem;
+}
+
+.math-exercise-content {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.math-exercise-content ul,
+.math-exercise-content ol {
+  margin: 8px 0 0;
+  padding-inline-start: 22px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+
+.math-exercise-content p {
+  margin: 8px 0 0;
+  color: var(--ink-soft);
+}
+
+.school-formula {
+  background: #0f172a;
+  color: #f8fafc;
+  border-radius: 16px;
+  padding: 14px 16px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-weight: 900;
+  text-align: center;
+}
+
+.math-solution {
+  border: 1px solid #86efac;
+  background: #f0fdf4;
+  border-radius: 16px;
+  padding: 12px;
+}
+
+.math-solution summary {
+  cursor: pointer;
+  font-weight: 900;
+  color: #166534;
+}
+
+.final-answer {
+  margin-top: 10px;
+  background: white;
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+  padding: 10px;
+  font-weight: 900;
+  color: #166534;
+}
+
+.math-diagram-shell {
+  min-height: 230px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(248,250,252,.98), rgba(255,255,255,.95)),
+    linear-gradient(rgba(30,64,175,.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,64,175,.075) 1px, transparent 1px);
+  background-size: auto, 24px 24px, 24px 24px;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  direction: rtl;
+}
+
+.math-circuit,
+.math-torque,
+.math-gear,
+.math-hydraulic,
+.math-engine-power,
+.math-prop {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  min-height: 190px;
+}
+
+.battery-school,
+.load-school,
+.bad-connection-school,
+.pivot-school,
+.force-school,
+.torque-result-school,
+.small-gear-school,
+.large-gear-school,
+.efficiency-school,
+.pressure-school,
+.fluid-school,
+.piston-school,
+.engine-school,
+.rpm-school,
+.power-school,
+.prop-school,
+.pitch-arrow-school,
+.generic-school-diagram {
+  position: absolute;
+  border: 2px solid #cbd5e1;
+  background: white;
+  border-radius: 18px;
+  padding: 12px;
+  text-align: center;
+  font-weight: 900;
+  box-shadow: 0 10px 22px rgba(15,23,42,.08);
+}
+
+.battery-school { right: 10px; top: 58px; width: 110px; border-color: #60a5fa; background: #eff6ff; }
+.load-school { left: 10px; top: 58px; width: 125px; border-color: #fb923c; background: #fff7ed; }
+.battery-school span, .load-school span, .bad-connection-school span, .piston-school span { display: block; color: var(--muted); font-size: .8rem; margin-top: 4px; }
+.wire-school { position: absolute; right: 120px; left: 135px; height: 5px; background: #334155; border-radius: 999px; }
+.wire-school.top { top: 82px; }
+.wire-school.bottom { top: 128px; }
+.current-arrow-school { position: absolute; top: 24px; right: 150px; left: 150px; text-align: center; color: #15803d; font-weight: 1000; }
+.bad-connection-school { right: 150px; top: 58px; width: 150px; border-color: #f87171; background: #fef2f2; }
+.drop-label-school { position: absolute; bottom: 22px; right: 140px; color: #b91c1c; font-weight: 900; }
+
+.pivot-school { right: 28px; top: 82px; width: 78px; border-color: #94a3b8; }
+.lever-school { position: absolute; right: 98px; left: 90px; top: 110px; height: 12px; background: #334155; border-radius: 999px; }
+.lever-school span { position: absolute; top: -38px; right: 32%; color: #475569; font-weight: 900; }
+.force-school { left: 15px; top: 36px; width: 105px; border-color: #f87171; background: #fef2f2; color: #991b1b; }
+.torque-result-school { right: 205px; bottom: 16px; width: 110px; border-color: #86efac; background: #f0fdf4; color: #166534; }
+
+.small-gear-school { right: 40px; top: 56px; width: 120px; height: 120px; border-radius: 50%; border-color: #60a5fa; background: #eff6ff; display: grid; place-items: center; }
+.large-gear-school { left: 30px; top: 32px; width: 160px; height: 160px; border-radius: 50%; border-color: #fb923c; background: #fff7ed; display: grid; place-items: center; }
+.gear-arrow-school { position: absolute; right: 175px; left: 205px; top: 88px; color: #ea580c; font-weight: 1000; text-align: center; }
+.efficiency-school { bottom: 4px; right: 190px; width: 120px; background: #f0fdf4; border-color: #86efac; }
+
+.pressure-school { right: 20px; top: 30px; width: 155px; border-color: #f87171; background: #fef2f2; }
+.fluid-school { right: 155px; left: 155px; top: 82px; background: #eff6ff; border-color: #60a5fa; }
+.piston-school { left: 20px; top: 45px; width: 145px; height: 110px; border-color: #fb923c; background: #fff7ed; display: grid; place-items: center; }
+
+.engine-school { right: 35px; top: 50px; width: 150px; height: 120px; border-color: #fb923c; background: #fff7ed; display: grid; place-items: center; }
+.rpm-school { left: 190px; top: 30px; width: 110px; border-color: #60a5fa; background: #eff6ff; }
+.power-school { left: 25px; bottom: 34px; width: 145px; border-color: #86efac; background: #f0fdf4; }
+
+.prop-school { right: 55px; top: 50px; width: 130px; height: 130px; border-radius: 50%; border-color: #60a5fa; background: #eff6ff; display: grid; place-items: center; }
+.pitch-arrow-school { right: 190px; left: 65px; top: 72px; border-color: #fb923c; background: #fff7ed; }
+
+.test-card .math-diagram-shell {
+  min-height: 170px;
+  margin: 12px 0;
+}
+
+.test-card .math-circuit,
+.test-card .math-torque,
+.test-card .math-gear,
+.test-card .math-hydraulic,
+.test-card .math-engine-power,
+.test-card .math-prop {
+  transform: scale(.82);
+  transform-origin: center;
+  min-height: 150px;
+}
+
+.secondary-btn {
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+  border-radius: 16px;
+  padding: 12px 18px;
+  font-weight: 900;
+}
+.secondary-btn:hover { background: #f8fafc; }
+.test-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+
+@media (max-width: 1050px) {
+  .lesson-reader-layout { grid-template-columns: 1fr !important; }
+  .lesson-table-of-contents { position: static; }
+  .math-exercise-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  .lesson-steps-grid { grid-template-columns: 1fr !important; }
+  .lesson-diagram-body { min-height: 300px !important; padding: 16px !important; }
+  .math-diagram-shell { overflow-x: auto; justify-content: start; }
+  .math-circuit,.math-torque,.math-gear,.math-hydraulic,.math-engine-power,.math-prop { min-width: 440px; }
+}

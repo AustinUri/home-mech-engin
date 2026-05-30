@@ -5,7 +5,7 @@ export default function Header({ percent, completedCount, totalModules }) {
     <header className="app-header">
       <div className="header-content">
         <div>
-          <div className="badge"><Target size={16} /> Home Mechanic Engineering</div>
+          <div className="badge"><Target size={16} /> הנדסה מכנית ביתית</div>
           <h1>מסלול הנדסאי־מכונאי ביתי</h1>
           <p>מכניקה, חשמל, מנועים, הילוכים, סירות, מבחנים ותיק עבודות — בקצב שלך, אבל בלי לברוח מהבסיס.</p>
         </div>

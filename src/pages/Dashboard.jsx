@@ -1,7 +1,7 @@
 import { CheckCircle2, ClipboardList, Gauge, LibraryBig } from 'lucide-react';
 import StatCard from '../components/StatCard.jsx';
 
-export default function Dashboard({ percent, completedCount, totalModules, nextModule, onOpenModule, progress }) {
+export default function Dashboard({ percent, completedCount, totalModules, nextModule, onOpenModule, onOpenTests, progress }) {
   const lowConfidence = Object.entries(progress.confidence || {}).filter(([, value]) => value === 'נמוכה');
   const Icon = nextModule.icon;
 
@@ -9,7 +9,7 @@ export default function Dashboard({ percent, completedCount, totalModules, nextM
     <section className="page-stack">
       <div className="hero panel blueprint-grid">
         <div className="hero-copy">
-          <span className="badge dark">Garage Mode</span>
+          <span className="badge dark">מצב מוסך לימודי</span>
           <h2>ברוך הבא למוסך הלימודי שלך</h2>
           <p>
             המטרה היא לא להיראות חכם. המטרה היא להבין מערכות, למדוד, לחשב, לאבחן ולבנות תיק עבודות.
@@ -17,7 +17,7 @@ export default function Dashboard({ percent, completedCount, totalModules, nextM
           </p>
           <div className="hero-actions">
             <button className="primary-btn" onClick={onOpenModule}>המשך למודול הבא</button>
-            <button className="ghost-btn">בדוק את עצמך במבחנים</button>
+            <button className="ghost-btn" onClick={onOpenTests}>בדוק את עצמך במבחנים</button>
           </div>
         </div>
         <div className="engine-plate">

@@ -3,7 +3,7 @@ import PageTitle from '../components/PageTitle.jsx';
 import { tests } from '../data/tests.js';
 import { scoreTest, isCorrect } from '../utils/testScoring.js';
 
-export default function TestsPage({ progress, onAnswer, onSubmit }) {
+export default function TestsPage({ progress, onAnswer, onSubmit, onReset }) {
   return (
     <section className="page-stack">
       <PageTitle
@@ -13,14 +13,14 @@ export default function TestsPage({ progress, onAnswer, onSubmit }) {
       />
       <div className="tests-list">
         {tests.map((test) => (
-          <TestCard key={test.id} test={test} progress={progress} onAnswer={onAnswer} onSubmit={onSubmit} />
+          <TestCard key={test.id} test={test} progress={progress} onAnswer={onAnswer} onSubmit={onSubmit} onReset={onReset} />
         ))}
       </div>
     </section>
   );
 }
 
-function TestCard({ test, progress, onAnswer, onSubmit }) {
+function TestCard({ test, progress, onAnswer, onSubmit, onReset }) {
   const answers = progress.testAnswers?.[test.id] || {};
   const submitted = progress.testSubmitted?.[test.id];
   const score = scoreTest(test, answers);
@@ -47,7 +47,10 @@ function TestCard({ test, progress, onAnswer, onSubmit }) {
         />
       ))}
 
-      <button className="primary-btn" onClick={() => onSubmit(test.id)}>בדוק מבחן</button>
+      <div className="test-actions">
+        <button className="primary-btn" onClick={() => onSubmit(test.id)}>בדוק מבחן</button>
+        <button className="secondary-btn" onClick={() => onReset(test.id)}>נקה מבחן</button>
+      </div>
     </article>
   );
 }
@@ -87,7 +90,7 @@ function Question({ testId, index, question, answer, submitted, onAnswer }) {
             step="any"
             value={answer ?? ''}
             onChange={(event) => onAnswer(testId, question.id, event.target.value)}
-            placeholder="Enter numeric answer"
+            placeholder="הכנס תשובה מספרית"
           />
           <span>{question.unit}</span>
           {submitted && <small>תשובה נכונה: {question.numericAnswer} {question.unit}</small>}

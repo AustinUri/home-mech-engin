@@ -1,64 +1,144 @@
-import { ClipboardList, Gauge, Hammer, PlayCircle } from 'lucide-react';
-import ModuleCard from '../components/ModuleCard.jsx';
+import { ClipboardList, Gauge, Hammer, PlayCircle, BookOpen, Target, Wrench, Search, CheckCircle2 } from 'lucide-react';
+import { detailedLessonsByModule } from '../data/detailedLessons.js';
 
 export default function ModulesPage({ query, setQuery, modules, selectedModule, setSelectedModuleId, progress, onToggleComplete, onSetConfidence, onSetNote }) {
+  const detailedLessons = detailedLessonsByModule[selectedModule.id] || [];
+
   return (
-    <section className="modules-layout">
-      <aside className="modules-list panel">
-        <label className="search-label">חיפוש מודול</label>
-        <input
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="חפש: חשמל, גיר, סירה, מומנט..."
-          className="search-input"
-        />
-        <div className="module-list-items">
-          {modules.map((module) => (
-            <ModuleCard
-              key={module.id}
-              module={module}
-              active={selectedModule.id === module.id}
-              done={progress.completed?.[module.id]}
-              onClick={() => setSelectedModuleId(module.id)}
+    <section className="modules-page page-stack">
+      <div className="panel module-browser">
+        <div className="module-browser-head">
+          <div>
+            <span className="badge"><Search size={15} /> בחירת מודול</span>
+            <h2>בחר נושא ללמידה</h2>
+            <p>המודולים מוצגים כמו מפת לימוד. בחר מודול, ואז תקבל מתחתיו שיעורים, מטרות, תרגול והערות.</p>
+          </div>
+          <label className="module-search-box">
+            <span>חיפוש</span>
+            <input
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="חשמל, גיר, סירה, מומנט..."
+              className="search-input"
             />
-          ))}
+          </label>
         </div>
-      </aside>
+
+        <div className="module-picker-grid">
+          {modules.map((module) => {
+            const Icon = module.icon;
+            const active = selectedModule.id === module.id;
+            const done = progress.completed?.[module.id];
+            return (
+              <button
+                type="button"
+                key={module.id}
+                className={`module-picker-card ${active ? 'active' : ''} ${done ? 'done' : ''}`}
+                onClick={() => setSelectedModuleId(module.id)}
+              >
+                <span className="module-picker-icon">{done ? <CheckCircle2 size={22} /> : <Icon size={22} />}</span>
+                <span className="module-picker-content">
+                  <strong>{module.shortTitle}</strong>
+                  <small>{module.level}</small>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
       <article className={`module-detail panel theme-${selectedModule.theme}`}>
-        <div className="module-detail-header">
-          <div>
+        <div className="module-detail-header improved">
+          <div className="module-title-block">
             <span className="badge"><PlayCircle size={16} /> {selectedModule.level}</span>
             <h2>{selectedModule.title}</h2>
             <p>{selectedModule.goal}</p>
           </div>
-          <button className="primary-btn" onClick={() => onToggleComplete(selectedModule.id)}>
-            {progress.completed?.[selectedModule.id] ? 'בטל השלמה' : 'סמן כהושלם'}
-          </button>
+          <div className="module-actions-card">
+            <button className="primary-btn" onClick={() => onToggleComplete(selectedModule.id)}>
+              {progress.completed?.[selectedModule.id] ? 'בטל השלמה' : 'סמן כהושלם'}
+            </button>
+            <div className="confidence-inline">
+              <span>רמת ביטחון</span>
+              {['נמוכה', 'בינונית', 'גבוהה'].map((level) => (
+                <button
+                  key={level}
+                  className={`confidence-btn compact ${progress.confidence?.[selectedModule.id] === level ? 'selected' : ''}`}
+                  onClick={() => onSetConfidence(selectedModule.id, level)}
+                >
+                  {level}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div className="info-grid">
+        <div className="info-grid improved-info-grid">
           <InfoBox icon={Gauge} title="משך" text={selectedModule.duration} />
           <InfoBox icon={Hammer} title="פרויקט" text={selectedModule.project} />
           <InfoBox icon={ClipboardList} title="מבחן" text={selectedModule.test} />
         </div>
 
-        <div className="two-column module-sections">
-          <div>
+        <div className="module-study-map">
+          <section className="module-study-card">
             <h3>שיעורים במודול</h3>
-            {selectedModule.lessons.map((lesson, index) => (
-              <div className="lesson-row" key={lesson}><strong>{index + 1}.</strong> {lesson}</div>
-            ))}
-          </div>
-          <div>
+            <div className="module-lesson-list">
+              {selectedModule.lessons.map((lesson, index) => (
+                <div className="module-lesson-pill" key={lesson}>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <strong>{lesson}</strong>
+                </div>
+              ))}
+            </div>
+          </section>
+          <section className="module-study-card">
             <h3>נושאים</h3>
-            <div className="topic-cloud">
+            <div className="topic-cloud bigger">
               {selectedModule.topics.map((topic) => <span key={topic}>{topic}</span>)}
             </div>
+          </section>
+        </div>
+
+        <div className="detailed-lessons-section">
+          <div className="section-title-row">
+            <BookOpen size={22} />
+            <div>
+              <h3>שיעורים מפורטים למודול</h3>
+              <p>כל שיעור בנוי לפי מטרה → הסבר → נוסחה → נקודות מפתח → דוגמה → תרגול.</p>
+            </div>
+          </div>
+          <div className="detailed-lesson-grid readable">
+            {detailedLessons.map((lesson, index) => (
+              <article className="detailed-lesson-card readable" key={lesson.title}>
+                <header className="readable-lesson-header">
+                  <span className="lesson-number">{String(index + 1).padStart(2, '0')}</span>
+                  <div>
+                    <h4>{lesson.title}</h4>
+                    <div className="lesson-objective"><Target size={16} /> {lesson.objective}</div>
+                  </div>
+                </header>
+
+                <div className="readable-lesson-body">
+                  <div className="lesson-main-text">
+                    <strong className="mini-heading">הסבר</strong>
+                    <p>{lesson.explanation}</p>
+                    {lesson.formula && <div className="formula lesson-formula" dir="ltr">{lesson.formula}</div>}
+                    <div className="lesson-example"><strong>דוגמה:</strong> {lesson.example}</div>
+                  </div>
+                  <div className="lesson-side-text">
+                    <strong className="mini-heading">נקודות מפתח</strong>
+                    <ul>
+                      {lesson.keyPoints.map((point) => <li key={point}>{point}</li>)}
+                    </ul>
+                    <div className="lesson-practice"><Wrench size={15} /> <strong>תרגול:</strong> {lesson.practice}</div>
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
 
-        <div className="module-workspace">
+        <div className="module-workspace improved-workspace">
           <div>
             <label>הערות אישיות למודול</label>
             <textarea
@@ -66,18 +146,6 @@ export default function ModulesPage({ query, setQuery, modules, selectedModule, 
               onChange={(event) => onSetNote(selectedModule.id, event.target.value)}
               placeholder="מה למדת? מה לא ברור? מה לבדוק שוב?"
             />
-          </div>
-          <div>
-            <label>רמת ביטחון</label>
-            {['נמוכה', 'בינונית', 'גבוהה'].map((level) => (
-              <button
-                key={level}
-                className={`confidence-btn ${progress.confidence?.[selectedModule.id] === level ? 'selected' : ''}`}
-                onClick={() => onSetConfidence(selectedModule.id, level)}
-              >
-                {level}
-              </button>
-            ))}
           </div>
         </div>
       </article>

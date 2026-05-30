@@ -16,7 +16,7 @@ const navItems = [
   { id: 'dashboard', label: 'דשבורד', icon: Home },
   { id: 'modules', label: 'מודולים', icon: GraduationCap },
   { id: 'library', label: 'ספרי בית ספר', icon: LibraryBig },
-  { id: 'lessons', label: 'שיעורי מושגים', icon: Lightbulb },
+  { id: 'lessons', label: 'שיעורים', icon: Lightbulb },
   { id: 'formulas', label: 'נוסחאות', icon: NotebookPen },
   { id: 'calculators', label: 'מחשבונים', icon: Calculator },
   { id: 'tests', label: 'מבחנים', icon: ClipboardList }
@@ -73,9 +73,23 @@ export default function App() {
     updateProgress({ ...progress, testSubmitted: { ...progress.testSubmitted, [testId]: true } });
   }
 
+  // Clears a single test attempt so the user can retake it cleanly.
+  function resetTest(testId) {
+    const nextAnswers = { ...(progress.testAnswers || {}) };
+    const nextSubmitted = { ...(progress.testSubmitted || {}) };
+    delete nextAnswers[testId];
+    delete nextSubmitted[testId];
+    updateProgress({ ...progress, testAnswers: nextAnswers, testSubmitted: nextSubmitted });
+  }
+
   function openNextModule() {
     setSelectedModuleId(nextModule.id);
     setActivePage('modules');
+  }
+
+  // Opens the tests page from dashboard buttons.
+  function openTests() {
+    setActivePage('tests');
   }
 
   return (
@@ -91,6 +105,7 @@ export default function App() {
               totalModules={modules.length}
               nextModule={nextModule}
               onOpenModule={openNextModule}
+              onOpenTests={openTests}
               progress={progress}
             />
           )}
@@ -111,7 +126,7 @@ export default function App() {
           {activePage === 'lessons' && <LessonsPage />}
           {activePage === 'formulas' && <FormulasPage />}
           {activePage === 'calculators' && <CalculatorsPage />}
-          {activePage === 'tests' && <TestsPage progress={progress} onAnswer={answerQuestion} onSubmit={submitTest} />}
+          {activePage === 'tests' && <TestsPage progress={progress} onAnswer={answerQuestion} onSubmit={submitTest} onReset={resetTest} />}
         </main>
       </div>
     </div>

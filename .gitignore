@@ -1,9 +1,37 @@
+# Dependencies
 node_modules/
+
+# Build output
 dist/
 build/
 .vite/
-.env
+
+# Logs
+logs/
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
 .vscode/
 .idea/
-.DS_Store
+
+# Testing and coverage
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Local package manager files
+.pnpm-store/

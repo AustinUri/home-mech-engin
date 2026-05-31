@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Calculator, ClipboardList, GraduationCap, Home, LibraryBig, Lightbulb, NotebookPen } from 'lucide-react';
+import { Calculator, ClipboardList, GraduationCap, HelpCircle, Home, LibraryBig, Lightbulb, NotebookPen } from 'lucide-react';
 import Header from './components/Header.jsx';
 import Sidebar from './components/Sidebar.jsx';
 import Dashboard from './pages/Dashboard.jsx';
@@ -8,6 +8,7 @@ import LibraryPage from './pages/LibraryPage.jsx';
 import LessonsPage from './pages/LessonsPage.jsx';
 import FormulasPage from './pages/FormulasPage.jsx';
 import TestsPage from './pages/TestsPage.jsx';
+import PopQuizPage from './pages/PopQuizPage.jsx';
 import CalculatorsPage from './pages/CalculatorsPage.jsx';
 import { modules } from './data/modules.js';
 import { loadProgress, saveProgress } from './utils/storage.js';
@@ -19,7 +20,8 @@ const navItems = [
   { id: 'lessons', label: 'שיעורים ותרגול', icon: Lightbulb },
   { id: 'formulas', label: 'נוסחאות', icon: NotebookPen },
   { id: 'calculators', label: 'מחשבונים', icon: Calculator },
-  { id: 'tests', label: 'מבחנים', icon: ClipboardList }
+  { id: 'tests', label: 'מבחנים', icon: ClipboardList },
+  { id: 'popquiz', label: 'מבחני פתע', icon: HelpCircle }
 ];
 
 export default function App() {
@@ -128,6 +130,7 @@ export default function App() {
           {activePage === 'formulas' && <FormulasPage />}
           {activePage === 'calculators' && <CalculatorsPage />}
           {activePage === 'tests' && <TestsPage progress={progress} onAnswer={answerQuestion} onSubmit={submitTest} onReset={resetTest} />}
+          {activePage === 'popquiz' && <PopQuizPage />}
         </main>
       </div>
     </div>

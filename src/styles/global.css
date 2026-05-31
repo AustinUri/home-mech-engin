@@ -4537,3 +4537,351 @@ textarea::placeholder {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* Pop quiz page: short surprise checks separated from full module tests. */
+.pop-quiz-controls {
+  padding: 22px;
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) 190px 160px auto;
+  gap: 16px;
+  align-items: end;
+}
+
+.pop-quiz-controls h3 {
+  margin: 12px 0 6px;
+}
+
+.pop-quiz-controls p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.pop-quiz-controls label span {
+  display: block;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.pop-quiz-controls select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px;
+  background: #f8fafc;
+  color: var(--text);
+  font-weight: 800;
+}
+
+.pop-quiz-card {
+  border-inline-start: 8px solid var(--orange);
+}
+
+.pop-question-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.pop-question-head span {
+  border: 1px solid var(--line);
+  background: #fff7ed;
+  color: #9a3412;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: .82rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.pop-explanation {
+  margin: 12px 0 0;
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  color: #1e3a8a;
+  border-radius: 14px;
+  padding: 12px;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .pop-quiz-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .pop-question-head {
+    flex-direction: column;
+  }
+}
+
+
+/* -----------------------------
+   Local Ollama AI tutor panel
+------------------------------ */
+.ai-tutor-card {
+  border-color: #bfdbfe !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.98), rgba(239,246,255,.92)),
+    linear-gradient(var(--blueprint-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--blueprint-line) 1px, transparent 1px) !important;
+}
+
+.ai-tutor-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+
+.ai-tutor-header h3 {
+  margin: 12px 0 6px;
+}
+
+.ai-tutor-header p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.ai-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 9px 12px;
+  font-weight: 900;
+  border: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.ai-status-pill.connected {
+  background: #dcfce7;
+  color: #166534;
+  border-color: #86efac;
+}
+
+.ai-status-pill.offline {
+  background: #fff7ed;
+  color: #9a3412;
+  border-color: #fdba74;
+}
+
+.ai-tutor-setup-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  color: #1e3a8a;
+  border-radius: 16px;
+  padding: 12px;
+  margin: 12px 0;
+}
+
+.ai-tutor-setup-note code {
+  direction: ltr;
+  background: #ffffff;
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  padding: 7px 9px;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.ai-model-select,
+.ai-question-box {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0;
+  font-weight: 900;
+}
+
+.ai-model-select select {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 11px;
+  background: #ffffff;
+  color: var(--text);
+  font-weight: 800;
+}
+
+.ai-suggested-questions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.ai-suggested-questions button {
+  border: 1px solid #bfdbfe;
+  background: #ffffff;
+  color: #1e3a8a;
+  border-radius: 999px;
+  padding: 9px 12px;
+  font-weight: 900;
+}
+
+.ai-suggested-questions button:hover {
+  background: #eff6ff;
+}
+
+.ai-question-box textarea {
+  min-height: 110px;
+}
+
+.ai-error-box {
+  margin-top: 14px;
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #991b1b;
+  border-radius: 16px;
+  padding: 12px;
+  font-weight: 900;
+  line-height: 1.7;
+}
+
+.ai-answer-box {
+  margin-top: 14px;
+  border: 1px solid #86efac;
+  background: #f0fdf4;
+  color: #14532d;
+  border-radius: 18px;
+  padding: 16px;
+  line-height: 1.85;
+}
+
+.ai-answer-box p {
+  white-space: pre-wrap;
+  margin: 10px 0 0;
+  color: #14532d !important;
+}
+
+@media (max-width: 720px) {
+  .ai-tutor-header {
+    flex-direction: column;
+  }
+
+  .ai-status-pill {
+    white-space: normal;
+  }
+}
+
+/* -----------------------------
+   Learning path overview content
+   The module page should be useful without duplicating lesson exercises.
+------------------------------ */
+.module-roadmap-panel,
+.module-overview-card,
+.module-end-goals {
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: rgba(255,255,255,.86);
+  padding: 20px;
+  margin-top: 22px;
+}
+
+.roadmap-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.roadmap-step-card {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #f8fafc;
+  padding: 16px;
+  min-height: 150px;
+}
+
+.roadmap-step-card span {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: #111827;
+  color: #facc15;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.roadmap-step-card strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.roadmap-step-card p,
+.module-overview-card li,
+.module-end-goals p,
+.module-end-goal-grid span,
+.module-lesson-pill small {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.module-study-map.expanded {
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+}
+
+.module-study-card h3,
+.module-overview-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.module-lesson-pill div strong,
+.module-lesson-pill div small {
+  display: block;
+}
+
+.module-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.module-overview-card ul {
+  margin: 0;
+  padding-inline-start: 22px;
+  display: grid;
+  gap: 10px;
+}
+
+.module-end-goal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.module-end-goal-grid div {
+  border: 1px solid var(--line);
+  background: #f8fafc;
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.module-end-goal-grid strong,
+.module-end-goal-grid span {
+  display: block;
+}
+
+.module-end-goal-grid strong {
+  margin-bottom: 6px;
+}
+
+@media (max-width: 1050px) {
+  .roadmap-steps-grid,
+  .module-overview-grid,
+  .module-end-goal-grid,
+  .module-study-map.expanded {
+    grid-template-columns: 1fr;
+  }
+}

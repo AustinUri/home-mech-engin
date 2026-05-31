@@ -3,6 +3,7 @@ import { BookOpen, Calculator, CheckCircle2, Lightbulb, PlayCircle, RotateCcw, T
 import PageTitle from '../components/PageTitle.jsx';
 import LessonDiagram from '../components/LessonDiagram.jsx';
 import MathExerciseDiagram from '../components/MathExerciseDiagram.jsx';
+import AiTutorPanel from '../components/AiTutorPanel.jsx';
 import { courseLessons } from '../data/courseLessons.js';
 import { modules } from '../data/modules.js';
 import { mathExercises } from '../data/mathExercises.js';
@@ -237,6 +238,8 @@ export default function LessonsPage() {
                 </div>
               </section>
             )}
+
+            <AiTutorPanel lesson={selectedLesson} />
 
             <section className="lesson-section-card">
               <h3>שלבי ההבנה</h3>

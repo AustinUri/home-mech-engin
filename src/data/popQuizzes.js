@@ -1,0 +1,200 @@
+// Pop quizzes are short surprise checks.
+// They are intentionally smaller than full tests and focus on immediate understanding.
+export const popQuizBank = [
+  {
+    id: 'pq-voltage-current',
+    topic: 'חשמל בסיסי',
+    difficulty: 'בסיסי',
+    type: 'choice',
+    question: 'מה ההבדל הכי נכון בין מתח לזרם?',
+    options: [
+      'מתח הוא הדחיפה, זרם הוא התנועה בפועל של מטענים',
+      'מתח וזרם הם אותו דבר',
+      'זרם הוא התנגדות של חוט',
+      'מתח מודדים באמפר'
+    ],
+    answer: 0,
+    explanation: 'מתח הוא הפרש פוטנציאל — הדחיפה. זרם הוא תנועת המטענים במעגל סגור.'
+  },
+  {
+    id: 'pq-ohm-calc',
+    topic: 'חשמל בסיסי',
+    difficulty: 'חישוב',
+    type: 'calc',
+    question: 'צרכן מחובר ל־12V וההתנגדות שלו 4Ω. מה הזרם?',
+    formula: 'I = V / R',
+    numericAnswer: 3,
+    tolerance: 0.05,
+    unit: 'A',
+    explanation: 'מציבים: I = 12 / 4 = 3A.'
+  },
+  {
+    id: 'pq-power-calc',
+    topic: 'חשמל בסיסי',
+    difficulty: 'חישוב',
+    type: 'calc',
+    question: 'צרכן עובד על 12V וצורך 6A. מה ההספק שלו?',
+    formula: 'P = V × I',
+    numericAnswer: 72,
+    tolerance: 0.5,
+    unit: 'W',
+    explanation: 'P = 12 × 6 = 72W.'
+  },
+  {
+    id: 'pq-torque-calc',
+    topic: 'מכניקה',
+    difficulty: 'חישוב',
+    type: 'calc',
+    question: 'כוח של 80N מופעל במרחק 0.25m מהציר. מה המומנט?',
+    formula: 'T = F × r',
+    numericAnswer: 20,
+    tolerance: 0.2,
+    unit: 'Nm',
+    explanation: 'T = 80 × 0.25 = 20Nm.'
+  },
+  {
+    id: 'pq-work-power',
+    topic: 'מכניקה',
+    difficulty: 'בסיסי',
+    type: 'choice',
+    question: 'מה ההבדל בין עבודה להספק?',
+    options: [
+      'עבודה היא אנרגיה שהועברה; הספק הוא הקצב שבו העבודה נעשית',
+      'עבודה והספק הם אותו דבר',
+      'הספק מודד רק מרחק',
+      'עבודה קיימת רק בחשמל'
+    ],
+    answer: 0,
+    explanation: 'עבודה מודדת כמה אנרגיה הועברה. הספק מודד כמה מהר זה קרה.'
+  },
+  {
+    id: 'pq-four-stroke',
+    topic: 'מנועים',
+    difficulty: 'בסיסי',
+    type: 'choice',
+    question: 'מה הסדר הנכון של מנוע 4 פעימות?',
+    options: [
+      'יניקה → דחיסה → עבודה → פליטה',
+      'דחיסה → יניקה → פליטה → עבודה',
+      'עבודה → פליטה → דחיסה → יניקה',
+      'פליטה → עבודה → יניקה → דחיסה'
+    ],
+    answer: 0,
+    explanation: 'במנוע 4 פעימות הסדר הוא יניקה, דחיסה, עבודה, פליטה.'
+  },
+  {
+    id: 'pq-engine-needs',
+    topic: 'מנועים',
+    difficulty: 'אבחנה בסיסית',
+    type: 'choice',
+    question: 'איזה תנאי אינו אחד מהבסיסיים להפעלת מנוע בנזין?',
+    options: ['אוויר', 'דלק', 'ניצוץ', 'צבע רכב'],
+    answer: 3,
+    explanation: 'מנוע בנזין צריך אוויר, דלק, ניצוץ, דחיסה ותזמון. צבע הרכב לא רלוונטי.'
+  },
+  {
+    id: 'pq-compression-ratio',
+    topic: 'מנועים',
+    difficulty: 'חישוב',
+    type: 'calc',
+    question: 'Vd=450cc ו־Vc=50cc. מה יחס הדחיסה?',
+    formula: 'CR = (Vd + Vc) / Vc',
+    numericAnswer: 10,
+    tolerance: 0.1,
+    unit: ':1',
+    explanation: 'CR = (450 + 50) / 50 = 10:1.'
+  },
+  {
+    id: 'pq-gear-ratio',
+    topic: 'הילוכים',
+    difficulty: 'חישוב',
+    type: 'calc',
+    question: 'גלגל שיניים מונע עם 60 שיניים וגלגל מניע עם 20 שיניים. מה יחס ההעברה?',
+    formula: 'GR = driven / driver',
+    numericAnswer: 3,
+    tolerance: 0.05,
+    unit: ':1',
+    explanation: 'יחס ההעברה הוא 60 / 20 = 3:1.'
+  },
+  {
+    id: 'pq-gear-effect',
+    topic: 'הילוכים',
+    difficulty: 'בסיסי',
+    type: 'choice',
+    question: 'מה בדרך כלל עושה יחס העברה גדול?',
+    options: [
+      'מקטין מהירות ומגדיל מומנט',
+      'מגדיל מהירות ומקטין מומנט',
+      'מגדיל הספק בחינם',
+      'מבטל חיכוך'
+    ],
+    answer: 0,
+    explanation: 'יחס העברה גדול בדרך כלל נותן יותר מומנט ביציאה אבל פחות מהירות.'
+  },
+  {
+    id: 'pq-hydraulic-force',
+    topic: 'הידראוליקה',
+    difficulty: 'חישוב',
+    type: 'calc',
+    question: 'לחץ של 2,000,000Pa פועל על בוכנה בשטח 0.002m². מה הכוח?',
+    formula: 'F = p × A',
+    numericAnswer: 4000,
+    tolerance: 20,
+    unit: 'N',
+    explanation: 'F = 2,000,000 × 0.002 = 4000N.'
+  },
+  {
+    id: 'pq-fuse-role',
+    topic: 'חשמל רכב',
+    difficulty: 'בסיסי',
+    type: 'choice',
+    question: 'מה התפקיד המרכזי של פיוז?',
+    options: [
+      'להגן על המעגל מזרם גבוה מדי',
+      'להעלות מתח',
+      'להחליף מצבר',
+      'להגדיל מומנט'
+    ],
+    answer: 0,
+    explanation: 'פיוז נשרף כשהזרם גבוה מדי, כדי להגן על החוטים והרכיבים.'
+  },
+  {
+    id: 'pq-marine-impeller',
+    topic: 'סירות',
+    difficulty: 'בסיסי',
+    type: 'choice',
+    question: 'מה תפקיד האימפלר במנוע ימי?',
+    options: ['להזרים מי קירור', 'להצית דלק', 'לשנות יחס דחיסה', 'למדוד מתח'],
+    answer: 0,
+    explanation: 'האימפלר מזרים מים במערכת הקירור הימית. אם הוא נכשל, מנוע יכול להתחמם מהר.'
+  },
+  {
+    id: 'pq-prop-pitch',
+    topic: 'סירות',
+    difficulty: 'חישוב',
+    type: 'calc',
+    question: 'Pitch של מדחף הוא 0.25m והוא מסתובב 1800rpm. מה ההתקדמות התאורטית בדקה?',
+    formula: 'distance/min = pitch × rpm',
+    numericAnswer: 450,
+    tolerance: 2,
+    unit: 'm/min',
+    explanation: '0.25 × 1800 = 450m/min לפני הפסדי החלקה.'
+  },
+  {
+    id: 'pq-obd-code',
+    topic: 'דיאגנוסטיקה',
+    difficulty: 'חשיבה',
+    type: 'choice',
+    question: 'למה לא מחליפים חיישן רק בגלל קוד תקלה?',
+    options: [
+      'כי הקוד מצביע על אזור בעיה, אבל הסיבה יכולה להיות חיווט, מתח, קרקע או תנאי מערכת',
+      'כי קודים תמיד שקריים',
+      'כי חיישנים אף פעם לא מתקלקלים',
+      'כי ECU לא משתמש בחיישנים'
+    ],
+    answer: 0,
+    explanation: 'קוד תקלה הוא התחלה של אבחון, לא הוכחה סופית שהחיישן עצמו מת.'
+  }
+];
+
+export const popQuizTopics = ['הכול', ...Array.from(new Set(popQuizBank.map((question) => question.topic)))];

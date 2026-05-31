@@ -1,10 +1,12 @@
-import { ClipboardList, Gauge, Hammer, PlayCircle, BookOpen, Target, Wrench, Search, CheckCircle2 } from 'lucide-react';
+import { ClipboardList, Gauge, Hammer, PlayCircle, BookOpen, Search, CheckCircle2, Route, ListChecks, Target, Layers } from 'lucide-react';
 import { courseLessons } from '../data/courseLessons.js';
 
 export default function ModulesPage({ query, setQuery, modules, selectedModule, setSelectedModuleId, progress, onToggleComplete, onSetConfidence, onSetNote }) {
   // Use the real lesson reader as the single source of truth for lesson counts and lesson names.
-  // This prevents the module card from showing 5 planned lessons when only 3 real lessons exist.
+  // This prevents the module card from showing planned lessons that do not exist yet.
   const moduleLessons = courseLessons.filter((lesson) => lesson.moduleId === selectedModule.id);
+  const prerequisiteItems = buildPrerequisiteItems(moduleLessons);
+  const checkpointItems = buildCheckpointItems(selectedModule, moduleLessons);
 
   return (
     <section className="modules-page page-stack">
@@ -83,14 +85,33 @@ export default function ModulesPage({ query, setQuery, modules, selectedModule, 
           <InfoBox icon={ClipboardList} title="מבחן" text={selectedModule.test} />
         </div>
 
-        <div className="module-study-map">
+        <div className="module-roadmap-panel">
+          <div className="section-title-row">
+            <Route size={22} />
+            <div>
+              <h3>איך להשתמש במודול הזה</h3>
+              <p>זה לא אזור תרגול כפול. זה אזור ניווט: מה לומדים, באיזה סדר, ומה צריך לסמן לעצמך לפני שעוברים הלאה.</p>
+            </div>
+          </div>
+          <div className="roadmap-steps-grid">
+            <RoadmapStep number="01" title="קרא את מפת הנושאים" text="תבין מה המודול מכסה לפני שאתה נכנס לשיעור הראשון." />
+            <RoadmapStep number="02" title="למד לפי סדר השיעורים" text="השיעורים מסודרים כך שבסיס מגיע לפני אבחון וחישובים מתקדמים." />
+            <RoadmapStep number="03" title="פתור רק בשיעורים ותרגול" text="כל התרגילים נמצאים בעמוד שיעורים ותרגול כדי שלא תהיה כפילות." />
+            <RoadmapStep number="04" title="סיים בפרויקט ובמבחן" text="הפרויקט והמבחן בודקים אם אתה יודע לחבר את החומר, לא רק לזכור מילים." />
+          </div>
+        </div>
+
+        <div className="module-study-map expanded">
           <section className="module-study-card">
-            <h3>שיעורים במודול</h3>
+            <h3><BookOpen size={18} /> שיעורים במודול</h3>
             <div className="module-lesson-list">
               {moduleLessons.length ? moduleLessons.map((lesson, index) => (
                 <div className="module-lesson-pill" key={lesson.id}>
                   <span>{String(index + 1).padStart(2, '0')}</span>
-                  <strong>{lesson.title}</strong>
+                  <div>
+                    <strong>{lesson.title}</strong>
+                    <small>{lesson.duration} · {lesson.level}</small>
+                  </div>
                 </div>
               )) : (
                 <div className="module-lesson-pill empty">
@@ -100,61 +121,46 @@ export default function ModulesPage({ query, setQuery, modules, selectedModule, 
               )}
             </div>
           </section>
+
           <section className="module-study-card">
-            <h3>נושאים</h3>
+            <h3><Layers size={18} /> נושאים שהמודול מכסה</h3>
             <div className="topic-cloud bigger">
               {selectedModule.topics.map((topic) => <span key={topic}>{topic}</span>)}
             </div>
           </section>
         </div>
 
-        <div className="detailed-lessons-section">
+        <div className="module-overview-grid">
+          <section className="module-overview-card">
+            <h3><Target size={18} /> ידע קודם שכדאי שיהיה</h3>
+            <ul>
+              {prerequisiteItems.map((item) => <li key={item}>{item}</li>)}
+            </ul>
+          </section>
+
+          <section className="module-overview-card">
+            <h3><ListChecks size={18} /> צ׳ק־ליסט לפני מבחן</h3>
+            <ul>
+              {checkpointItems.map((item) => <li key={item}>{item}</li>)}
+            </ul>
+          </section>
+        </div>
+
+        <div className="module-end-goals panel">
           <div className="section-title-row">
-            <BookOpen size={22} />
+            <ClipboardList size={22} />
             <div>
-              <h3>שיעורים מפורטים למודול</h3>
-              <p>כאן מוצגים אותם שיעורים שמופיעים בעמוד השיעורים. אין יותר ספירה מזויפת או רשימה מתוכננת שלא קיימת בפועל.</p>
+              <h3>מה אמור לצאת לך מהמודול?</h3>
+              <p>
+                בסוף המודול אתה אמור לדעת להסביר את המערכת במילים שלך, לזהות את המושגים המרכזיים,
+                להבין באיזה שיעור למצוא את התרגול, ולהיות מוכן לפרויקט ולמבחן של המודול.
+              </p>
             </div>
           </div>
-          <div className="detailed-lesson-grid readable">
-            {moduleLessons.length ? moduleLessons.map((lesson, index) => (
-              <article className="detailed-lesson-card readable" key={lesson.id}>
-                <header className="readable-lesson-header">
-                  <span className="lesson-number">{String(index + 1).padStart(2, '0')}</span>
-                  <div>
-                    <h4>{lesson.title}</h4>
-                    <div className="lesson-objective"><Target size={16} /> {lesson.objective}</div>
-                  </div>
-                </header>
-
-                <div className="readable-lesson-body">
-                  <div className="lesson-main-text">
-                    <strong className="mini-heading">פתיחה</strong>
-                    <p>{lesson.intro}</p>
-                    <strong className="mini-heading">רעיון מרכזי</strong>
-                    <p>{lesson.coreIdea}</p>
-                    <div className="lesson-example"><strong>דוגמה:</strong> {lesson.example}</div>
-                  </div>
-                  <div className="lesson-side-text">
-                    <strong className="mini-heading">שלבי הבנה</strong>
-                    <ul>
-                      {(lesson.steps || []).slice(0, 5).map((point) => <li key={point}>{point}</li>)}
-                    </ul>
-                    <div className="lesson-practice"><Wrench size={15} /> <strong>תרגול:</strong> {lesson.practice}</div>
-                  </div>
-                </div>
-              </article>
-            )) : (
-              <article className="detailed-lesson-card readable">
-                <header className="readable-lesson-header">
-                  <span className="lesson-number">!</span>
-                  <div>
-                    <h4>אין עדיין שיעורים אמיתיים למודול הזה</h4>
-                    <div className="lesson-objective"><Target size={16} /> המודול קיים כמסגרת, אבל צריך לכתוב לו שיעורים לפני שסופרים אותו כחומר לימוד.</div>
-                  </div>
-                </header>
-              </article>
-            )}
+          <div className="module-end-goal-grid">
+            <div><strong>תוצר למידה</strong><span>הבנה מסודרת של {selectedModule.shortTitle}</span></div>
+            <div><strong>תוצר מעשי</strong><span>{selectedModule.project}</span></div>
+            <div><strong>בדיקה מסכמת</strong><span>{selectedModule.test}</span></div>
           </div>
         </div>
 
@@ -180,4 +186,43 @@ function InfoBox({ icon: Icon, title, text }) {
       <p>{text}</p>
     </div>
   );
+}
+
+function RoadmapStep({ number, title, text }) {
+  return (
+    <div className="roadmap-step-card">
+      <span>{number}</span>
+      <strong>{title}</strong>
+      <p>{text}</p>
+    </div>
+  );
+}
+
+function buildPrerequisiteItems(lessons) {
+  const unique = [...new Set(
+    lessons
+      .map((lesson) => lesson.prerequisite)
+      .filter(Boolean)
+      .filter((item) => !item.includes('אין דרישות'))
+  )];
+
+  if (unique.length) return unique.slice(0, 4);
+
+  return [
+    'להכיר את שמות הנושאים המרכזיים של המודול.',
+    'לעבור על רשימת השיעורים לפני שמתחילים לפתור שאלות.',
+    'לא לקפוץ לאבחון לפני שמבינים איך המערכת עובדת.'
+  ];
+}
+
+function buildCheckpointItems(module, lessons) {
+  const firstLessons = lessons.slice(0, 3).map((lesson) => `אני יודע להסביר את הרעיון של: ${lesson.title}`);
+  const topicCheckpoint = module.topics.length ? `אני מזהה את המושגים המרכזיים: ${module.topics.slice(0, 4).join(', ')}` : 'אני מזהה את המושגים המרכזיים של המודול.';
+
+  return [
+    topicCheckpoint,
+    ...firstLessons,
+    `אני מבין מה הפרויקט דורש: ${module.project}`,
+    `אני יודע איזה מבחן מסכם מחכה לי: ${module.test}`
+  ].slice(0, 6);
 }

@@ -1,8 +1,10 @@
 import { ClipboardList, Gauge, Hammer, PlayCircle, BookOpen, Target, Wrench, Search, CheckCircle2 } from 'lucide-react';
-import { detailedLessonsByModule } from '../data/detailedLessons.js';
+import { courseLessons } from '../data/courseLessons.js';
 
 export default function ModulesPage({ query, setQuery, modules, selectedModule, setSelectedModuleId, progress, onToggleComplete, onSetConfidence, onSetNote }) {
-  const detailedLessons = detailedLessonsByModule[selectedModule.id] || [];
+  // Use the real lesson reader as the single source of truth for lesson counts and lesson names.
+  // This prevents the module card from showing 5 planned lessons when only 3 real lessons exist.
+  const moduleLessons = courseLessons.filter((lesson) => lesson.moduleId === selectedModule.id);
 
   return (
     <section className="modules-page page-stack">
@@ -29,6 +31,7 @@ export default function ModulesPage({ query, setQuery, modules, selectedModule, 
             const Icon = module.icon;
             const active = selectedModule.id === module.id;
             const done = progress.completed?.[module.id];
+            const realLessonCount = courseLessons.filter((lesson) => lesson.moduleId === module.id).length;
             return (
               <button
                 type="button"
@@ -40,6 +43,7 @@ export default function ModulesPage({ query, setQuery, modules, selectedModule, 
                 <span className="module-picker-content">
                   <strong>{module.shortTitle}</strong>
                   <small>{module.level}</small>
+                  <small>{realLessonCount} שיעורים בפועל</small>
                 </span>
               </button>
             );
@@ -83,12 +87,17 @@ export default function ModulesPage({ query, setQuery, modules, selectedModule, 
           <section className="module-study-card">
             <h3>שיעורים במודול</h3>
             <div className="module-lesson-list">
-              {selectedModule.lessons.map((lesson, index) => (
-                <div className="module-lesson-pill" key={lesson}>
+              {moduleLessons.length ? moduleLessons.map((lesson, index) => (
+                <div className="module-lesson-pill" key={lesson.id}>
                   <span>{String(index + 1).padStart(2, '0')}</span>
-                  <strong>{lesson}</strong>
+                  <strong>{lesson.title}</strong>
                 </div>
-              ))}
+              )) : (
+                <div className="module-lesson-pill empty">
+                  <span>!</span>
+                  <strong>עדיין לא נכתבו שיעורים אמיתיים למודול הזה</strong>
+                </div>
+              )}
             </div>
           </section>
           <section className="module-study-card">
@@ -104,12 +113,12 @@ export default function ModulesPage({ query, setQuery, modules, selectedModule, 
             <BookOpen size={22} />
             <div>
               <h3>שיעורים מפורטים למודול</h3>
-              <p>כל שיעור בנוי לפי מטרה → הסבר → נוסחה → נקודות מפתח → דוגמה → תרגול.</p>
+              <p>כאן מוצגים אותם שיעורים שמופיעים בעמוד השיעורים. אין יותר ספירה מזויפת או רשימה מתוכננת שלא קיימת בפועל.</p>
             </div>
           </div>
           <div className="detailed-lesson-grid readable">
-            {detailedLessons.map((lesson, index) => (
-              <article className="detailed-lesson-card readable" key={lesson.title}>
+            {moduleLessons.length ? moduleLessons.map((lesson, index) => (
+              <article className="detailed-lesson-card readable" key={lesson.id}>
                 <header className="readable-lesson-header">
                   <span className="lesson-number">{String(index + 1).padStart(2, '0')}</span>
                   <div>
@@ -120,21 +129,32 @@ export default function ModulesPage({ query, setQuery, modules, selectedModule, 
 
                 <div className="readable-lesson-body">
                   <div className="lesson-main-text">
-                    <strong className="mini-heading">הסבר</strong>
-                    <p>{lesson.explanation}</p>
-                    {lesson.formula && <div className="formula lesson-formula" dir="ltr">{lesson.formula}</div>}
+                    <strong className="mini-heading">פתיחה</strong>
+                    <p>{lesson.intro}</p>
+                    <strong className="mini-heading">רעיון מרכזי</strong>
+                    <p>{lesson.coreIdea}</p>
                     <div className="lesson-example"><strong>דוגמה:</strong> {lesson.example}</div>
                   </div>
                   <div className="lesson-side-text">
-                    <strong className="mini-heading">נקודות מפתח</strong>
+                    <strong className="mini-heading">שלבי הבנה</strong>
                     <ul>
-                      {lesson.keyPoints.map((point) => <li key={point}>{point}</li>)}
+                      {(lesson.steps || []).slice(0, 5).map((point) => <li key={point}>{point}</li>)}
                     </ul>
                     <div className="lesson-practice"><Wrench size={15} /> <strong>תרגול:</strong> {lesson.practice}</div>
                   </div>
                 </div>
               </article>
-            ))}
+            )) : (
+              <article className="detailed-lesson-card readable">
+                <header className="readable-lesson-header">
+                  <span className="lesson-number">!</span>
+                  <div>
+                    <h4>אין עדיין שיעורים אמיתיים למודול הזה</h4>
+                    <div className="lesson-objective"><Target size={16} /> המודול קיים כמסגרת, אבל צריך לכתוב לו שיעורים לפני שסופרים אותו כחומר לימוד.</div>
+                  </div>
+                </header>
+              </article>
+            )}
           </div>
         </div>
 

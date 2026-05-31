@@ -3,11 +3,11 @@
 export const tests = [
   {
     id: 'intro',
-    title: 'מבחן פתיחה — אבחון וחשיבה טכנית',
+    title: 'מבחן פתיחה — חשיבה טכנית ויחידות',
     moduleId: 'm0',
-    description: 'בודק אם אתה חושב כמו מאבחן או כמו מחליף חלקים.',
+    description: 'בודק בסיס כללי בלבד: אין כאן אבחון מנוע לפני שלמדת מנוע.',
     questions: [
-      { type: 'choice', id: 'q1', question: 'מה בודקים ראשון כשמנוע לא מניע?', options: ['מחליפים סטרטר', 'בודקים סימפטום ומחלקים למערכות', 'מחליפים מצבר', 'פותחים מנוע'], answer: 1 },
+      { type: 'choice', id: 'q1', question: 'למה לא מאבחנים מערכת לפני שלמדנו איך היא עובדת?', options: ['כי אבחון דורש לדעת מה תקין ומה לא', 'כי תמיד מחליפים חלקים', 'כי נוסחאות לא חשובות', 'כי מערכת שלא מכירים תמיד תקינה'], answer: 0 },
       { type: 'choice', id: 'q2', question: 'מה מסוכן בגישה של "נחליף חלק ונראה"?', options: ['היא תמיד מהירה', 'היא לא דורשת ידע', 'היא יקרה ולא אבחונית', 'היא הדרך הרשמית של יצרנים'], answer: 2 },
       { type: 'calc', id: 'q3', question: 'מפתח באורך 0.3m ומפעילים עליו כוח של 80N. מה המומנט בניוטון־מטר?', formula: 'T = F × r', diagram: 'torqueLever', numericAnswer: 24, tolerance: 0.2, unit: 'Nm' },
       { type: 'calc', id: 'q4', question: 'צרכן ברכב צורך 6A במתח 12V. מה ההספק שלו?', formula: 'P = V × I', diagram: 'powerLoad', numericAnswer: 72, tolerance: 0.5, unit: 'W' }

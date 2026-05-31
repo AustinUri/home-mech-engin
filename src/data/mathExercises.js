@@ -3,7 +3,7 @@
 export const mathExercises = [
   {
     id: 'ex-ohm-1',
-    lessonId: 'l5-ohms-law',
+    lessonId: 'l2-02-ohms-law',
     moduleId: 'm2',
     title: 'תרגיל 1 — מציאת זרם בנורה',
     type: 'ohmCircuit',
@@ -11,11 +11,15 @@ export const mathExercises = [
     find: 'מצא את הזרם I במעגל.',
     formula: 'I = V / R',
     solution: ['מציבים: I = 12 / 6', 'מקבלים: I = 2A'],
-    answer: '2A'
+    answer: '2A',
+    numericAnswer: 2,
+    tolerance: 0.05,
+    unit: 'A',
+    answerHint: 'חלק את המתח בהתנגדות: 12 / 6.'
   },
   {
     id: 'ex-ohm-power',
-    lessonId: 'l5-ohms-law',
+    lessonId: 'l2-02-ohms-law',
     moduleId: 'm2',
     title: 'תרגיל 2 — הספק צרכן ברכב',
     type: 'powerLoad',
@@ -23,11 +27,15 @@ export const mathExercises = [
     find: 'מצא את ההספק P.',
     formula: 'P = V × I',
     solution: ['מציבים: P = 12 × 8', 'מקבלים: P = 96W'],
-    answer: '96W'
+    answer: '96W',
+    numericAnswer: 96,
+    tolerance: 0.5,
+    unit: 'W',
+    answerHint: 'הכפל מתח בזרם: 12 × 8.'
   },
   {
     id: 'ex-voltage-drop',
-    lessonId: 'l12-voltage-drop',
+    lessonId: 'l2-04-voltage-drop',
     moduleId: 'm2',
     title: 'תרגיל 3 — נפילת מתח בחיבור חלוד',
     type: 'voltageDrop',
@@ -35,11 +43,15 @@ export const mathExercises = [
     find: 'מצא את נפילת המתח על החיבור.',
     formula: 'Vdrop = I × R',
     solution: ['מציבים: Vdrop = 40 × 0.04', 'מקבלים: Vdrop = 1.6V', 'במערכת 12V זו נפילה משמעותית.'],
-    answer: '1.6V'
+    answer: '1.6V',
+    numericAnswer: 1.6,
+    tolerance: 0.05,
+    unit: 'V',
+    answerHint: 'השתמש ב־Vdrop = I × R.'
   },
   {
     id: 'ex-torque-1',
-    lessonId: 'l6-torque',
+    lessonId: 'l1-02-torque-lever',
     moduleId: 'm1',
     title: 'תרגיל 4 — מומנט עם מפתח ברגים',
     type: 'torqueLever',
@@ -47,11 +59,15 @@ export const mathExercises = [
     find: 'מצא את המומנט T.',
     formula: 'T = F × r',
     solution: ['מציבים: T = 90 × 0.35', 'מקבלים: T = 31.5Nm'],
-    answer: '31.5Nm'
+    answer: '31.5Nm',
+    numericAnswer: 31.5,
+    tolerance: 0.1,
+    unit: 'Nm',
+    answerHint: 'מומנט הוא כוח כפול מרחק: 90 × 0.35.'
   },
   {
     id: 'ex-gear-1',
-    lessonId: 'l7-gear-ratio',
+    lessonId: 'l5-02-gear-ratio',
     moduleId: 'm5',
     title: 'תרגיל 5 — מומנט יציאה בגיר',
     type: 'gearTorque',
@@ -59,11 +75,15 @@ export const mathExercises = [
     find: 'מצא את מומנט היציאה.',
     formula: 'Tout = Tin × GR × η',
     solution: ['מציבים: Tout = 110 × 3.5 × 0.9', 'מקבלים: Tout = 346.5Nm'],
-    answer: '346.5Nm'
+    answer: '346.5Nm',
+    numericAnswer: 346.5,
+    tolerance: 0.5,
+    unit: 'Nm',
+    answerHint: 'אל תשכח יעילות: 110 × 3.5 × 0.9.'
   },
   {
     id: 'ex-pressure-1',
-    lessonId: 'l18-hydraulic-brakes',
+    lessonId: 'l4-04-hydraulic-brakes',
     moduleId: 'm4',
     title: 'תרגיל 6 — כוח בבלם הידראולי',
     type: 'hydraulicPiston',
@@ -71,11 +91,15 @@ export const mathExercises = [
     find: 'מצא את הכוח F שמופעל על הבוכנה.',
     formula: 'F = p × A',
     solution: ['מציבים: F = 2,500,000 × 0.003', 'מקבלים: F = 7,500N'],
-    answer: '7,500N'
+    answer: '7,500N',
+    numericAnswer: 7500,
+    tolerance: 5,
+    unit: 'N',
+    answerHint: 'כוח הידראולי: לחץ כפול שטח.'
   },
   {
     id: 'ex-engine-power',
-    lessonId: 'l9-force-work-power',
+    lessonId: 'l1-01-force-work-power',
     moduleId: 'm1',
     title: 'תרגיל 7 — הספק ממומנט וסל״ד',
     type: 'enginePower',
@@ -83,11 +107,15 @@ export const mathExercises = [
     find: 'מצא הספק בקילוואט.',
     formula: 'P(kW) = T × rpm / 9549',
     solution: ['מציבים: P = 150 × 3000 / 9549', 'מקבלים: P ≈ 47.1kW'],
-    answer: '≈47.1kW'
+    answer: '≈47.1kW',
+    numericAnswer: 47.1,
+    tolerance: 0.2,
+    unit: 'kW',
+    answerHint: 'הצב בנוסחה: 150 × 3000 / 9549.'
   },
   {
     id: 'ex-prop-pitch',
-    lessonId: 'l22-propeller-pitch',
+    lessonId: 'l7-03-propeller-pitch',
     moduleId: 'm7',
     title: 'תרגיל 8 — התקדמות תאורטית של מדחף',
     type: 'propPitch',
@@ -95,6 +123,10 @@ export const mathExercises = [
     find: 'מצא התקדמות תאורטית בדקה.',
     formula: 'distance/min = pitch × rpm',
     solution: ['מציבים: 0.28 × 2200', 'מקבלים: 616m/min תאורטית לפני החלקה במים.'],
-    answer: '616m/min'
+    answer: '616m/min',
+    numericAnswer: 616,
+    tolerance: 1,
+    unit: 'm/min',
+    answerHint: 'Pitch כפול rpm נותן התקדמות תאורטית בדקה.'
   }
 ];

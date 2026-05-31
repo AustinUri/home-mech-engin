@@ -9,6 +9,7 @@ export default function Header({ percent, completedCount, totalModules }) {
           <h1>מסלול הנדסאי־מכונאי ביתי</h1>
           <p>מכניקה, חשמל, מנועים, הילוכים, סירות, מבחנים ותיק עבודות — בקצב שלך, אבל בלי לברוח מהבסיס.</p>
         </div>
+
         <div className="progress-card">
           <div className="progress-top"><strong>התקדמות</strong><span>{percent}%</span></div>
           <div className="progress-track"><div className="progress-fill" style={{ width: `${percent}%` }} /></div>

@@ -73,7 +73,6 @@ export default function App() {
     updateProgress({ ...progress, testSubmitted: { ...progress.testSubmitted, [testId]: true } });
   }
 
-  // Clears a single test attempt so the user can retake it cleanly.
   function resetTest(testId) {
     const nextAnswers = { ...(progress.testAnswers || {}) };
     const nextSubmitted = { ...(progress.testSubmitted || {}) };
@@ -87,14 +86,16 @@ export default function App() {
     setActivePage('modules');
   }
 
-  // Opens the tests page from dashboard buttons.
   function openTests() {
     setActivePage('tests');
   }
 
   return (
     <div className="app-shell">
-      <Header percent={percent} completedCount={completedCount} totalModules={modules.length} />
+      <Header
+        percent={percent}
+        completedCount={completedCount}
+        totalModules={modules.length}      />
       <div className="app-layout">
         <Sidebar items={navItems} activePage={activePage} onChange={setActivePage} />
         <main>

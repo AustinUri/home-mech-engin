@@ -11,9 +11,9 @@ export default function ModulesPage({ query, setQuery, modules, selectedModule, 
       <div className="panel module-browser">
         <div className="module-browser-head">
           <div>
-            <span className="badge"><Search size={15} /> בחירת מודול</span>
-            <h2>בחר נושא ללמידה</h2>
-            <p>המודולים מוצגים כמו מפת לימוד. בחר מודול, ואז תקבל מתחתיו שיעורים, מטרות, תרגול והערות.</p>
+            <span className="badge"><Search size={15} /> מפת הקורס</span>
+            <h2>מסלול הלימוד</h2>
+            <p>כאן רואים את מפת הקורס: הנושאים הגדולים, הסדר המומלץ, מטרות כל מודול והשיעורים ששייכים אליו.</p>
           </div>
           <label className="module-search-box">
             <span>חיפוש</span>

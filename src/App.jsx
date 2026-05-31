@@ -14,9 +14,9 @@ import { loadProgress, saveProgress } from './utils/storage.js';
 
 const navItems = [
   { id: 'dashboard', label: 'דשבורד', icon: Home },
-  { id: 'modules', label: 'מודולים', icon: GraduationCap },
+  { id: 'modules', label: 'מסלול הלימוד', icon: GraduationCap },
   { id: 'library', label: 'ספרי בית ספר', icon: LibraryBig },
-  { id: 'lessons', label: 'שיעורים', icon: Lightbulb },
+  { id: 'lessons', label: 'שיעורים ותרגול', icon: Lightbulb },
   { id: 'formulas', label: 'נוסחאות', icon: NotebookPen },
   { id: 'calculators', label: 'מחשבונים', icon: Calculator },
   { id: 'tests', label: 'מבחנים', icon: ClipboardList }

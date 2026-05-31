@@ -134,14 +134,14 @@ export default function LessonsPage() {
     <section className="page-stack lessons-reader-page">
       <PageTitle
         icon={Lightbulb}
-        title="שיעורים — לא רק מושגים"
-        subtitle="כאן מתחיל הלימוד האמיתי: כל שיעור כולל מטרה, הסבר, תרשים גדול, דוגמה, תרגול ובדיקת הבנה."
+        title="שיעורים ותרגול"
+        subtitle="כאן לומדים בפועל: נכנסים לשיעור מסוים, קוראים הסבר, מסתכלים על תרשים, פותרים תרגול ובודקים הבנה."
       />
 
       <div className="lesson-module-strip panel">
         <div className="lesson-module-strip-head">
-          <span className="badge"><BookOpen size={15} /> בחר מודול</span>
-          <p>אל תקפוץ לאבחון לפני שהבנת את המערכת. המודולים מסודרים לפי תלות לימודית.</p>
+          <span className="badge"><BookOpen size={15} /> בחר נושא מתוך המסלול</span>
+          <p>בחר את הנושא הגדול, ואז למד את השיעורים שלו לפי הסדר. לא קופצים לאבחון לפני שמבינים איך המערכת עובדת.</p>
         </div>
         <div className="lesson-module-buttons">
           {modules.map((module) => {

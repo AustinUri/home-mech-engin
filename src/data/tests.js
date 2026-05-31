@@ -137,4 +137,30 @@ export const tests = [
     ]
   }
 
+,
+  {
+    id: 'advanced-math-electric-mechanics',
+    title: 'מבחן מתקדם — חשמל ומכניקה בכמה שלבים',
+    moduleId: 'm2',
+    description: 'שאלות עם יותר משלב אחד: קודם מוצאים משתנה ביניים, אחר כך מחשבים תוצאה סופית.',
+    questions: [
+      { type: 'calc', id: 'q1', question: 'סטרטר צורך 85A דרך חיבור שהתנגדותו 0.035Ω. מה אחוז נפילת המתח מתוך 12V?', formula: 'Vdrop=I×R, %=Vdrop/12×100', diagram: 'voltageDrop', numericAnswer: 24.8, tolerance: 0.4, unit: '%' },
+      { type: 'calc', id: 'q2', question: 'מצבר 60Ah מפעיל צרכן 120W על 12V. משתמשים רק ב־80% מהקיבולת. כמה שעות תאורטיות?', formula: 'I=P/V, t=Ah×0.8/I', diagram: 'powerLoad', numericAnswer: 4.8, tolerance: 0.1, unit: 'h' },
+      { type: 'calc', id: 'q3', question: 'מומנט מנוע 140Nm, יחס הילוך 3.6, דיפרנציאל 4.1, יעילות 84%. מה מומנט הגלגל?', formula: 'T=Tin×gear×final×η', diagram: 'gearTorque', numericAnswer: 1736, tolerance: 12, unit: 'Nm' },
+      { type: 'calc', id: 'q4', question: 'מנוע מפיק 180Nm ב־4200rpm. מה ההספק בכוחות סוס? השתמש: P(kW)=T×rpm/9549, hp=kW×1.341', formula: 'hp=(T×rpm/9549)×1.341', diagram: 'enginePower', numericAnswer: 106.2, tolerance: 1.2, unit: 'hp' }
+    ]
+  },
+  {
+    id: 'advanced-math-engine-marine-hydraulic',
+    title: 'מבחן מתקדם — מנועים, הידראוליקה וסירות',
+    moduleId: 'm3',
+    description: 'חישובים עם המרות יחידות, יחס דחיסה, לחץ ב־bar והחלקת מדחף.',
+    questions: [
+      { type: 'calc', id: 'q1', question: 'Bore=82mm, Stroke=90mm, ארבעה צילינדרים. מה נפח המנוע הכולל בסמ״ק?', formula: 'V=π×(bore²/4)×stroke×cylinders', diagram: 'enginePower', numericAnswer: 1901, tolerance: 20, unit: 'cc' },
+      { type: 'calc', id: 'q2', question: 'Vd=475cc ו־Vc=50cc. מה יחס הדחיסה?', formula: 'CR=(Vd+Vc)/Vc', diagram: 'enginePower', numericAnswer: 10.5, tolerance: 0.1, unit: ':1' },
+      { type: 'calc', id: 'q3', question: 'צריך כוח 7200N בבוכנה ששטחה 0.0024m². מה הלחץ הדרוש ב־bar?', formula: 'p=F/A, bar=Pa/100000', diagram: 'hydraulicPiston', numericAnswer: 30, tolerance: 0.3, unit: 'bar' },
+      { type: 'calc', id: 'q4', question: 'Pitch=0.30m, rpm=2200, התקדמות אמיתית 520m/min. מה אחוז ההחלקה?', formula: 'slip=(theoretical-actual)/theoretical×100', diagram: 'propPitch', numericAnswer: 21.2, tolerance: 0.6, unit: '%' }
+    ]
+  }
+
 ];

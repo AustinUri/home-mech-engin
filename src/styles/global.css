@@ -4445,3 +4445,95 @@ textarea::placeholder {
     grid-template-columns: 1fr;
   }
 }
+
+/* -----------------------------
+   Explained laws / formulas page
+------------------------------ */
+.law-grid {
+  grid-template-columns: repeat(2, minmax(320px, 1fr)) !important;
+  align-items: stretch;
+}
+
+.law-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.law-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.law-card-header h3 {
+  margin: 0;
+}
+
+.law-pill {
+  border: 1px solid var(--line);
+  background: #fff7ed;
+  color: #9a3412;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: .78rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.law-short-use {
+  margin: 0;
+  font-weight: 800;
+  color: var(--ink-soft) !important;
+}
+
+.law-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.law-box {
+  border: 1px solid var(--line);
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 12px;
+}
+
+.law-box strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.law-box p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+
+.law-common-mistake {
+  border: 1px solid #fdba74;
+  background: #fff7ed;
+  border-radius: 16px;
+  padding: 12px;
+  margin-top: auto;
+}
+
+.law-common-mistake strong {
+  color: #9a3412;
+}
+
+.law-common-mistake p {
+  margin: 6px 0 0;
+  color: #7c2d12;
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .law-grid,
+  .law-details-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

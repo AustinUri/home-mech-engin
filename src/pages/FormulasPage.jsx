@@ -8,13 +8,13 @@ export default function FormulasPage() {
     <section className="page-stack">
       <PageTitle
         icon={NotebookPen}
-        title="מחברת נוסחאות"
-        subtitle="נוסחאות הן כלי עבודה. לכל נוסחה חייב להיות שימוש ברור וחישוב שאפשר לבצע."
+        title="חוקי יסוד ונוסחאות מוסברות"
+        subtitle="כאן לא רק רואים נוסחה. כל חוק כולל משמעות, יחידות, מתי משתמשים בו, דוגמה וטעות נפוצה."
       />
       {formulas.map((group) => (
         <section key={group.category}>
           <h3 className="section-heading">{group.category}</h3>
-          <div className="formula-grid">
+          <div className="formula-grid law-grid">
             {group.items.map((item) => <FormulaCard item={item} key={item.name} />)}
           </div>
         </section>

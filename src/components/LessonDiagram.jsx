@@ -47,6 +47,14 @@ export default function LessonDiagram({ type }) {
       return <MarineCooling />;
     case 'propellerPitch':
       return <PropellerPitch />;
+    case 'valveSystem':
+      return <ValveSystem />;
+    case 'pistonPumpSingleActing':
+      return <PistonPumpSingleActing />;
+    case 'pistonPumpStates':
+      return <PistonPumpStates />;
+    case 'flexibleImpellerPump':
+      return <FlexibleImpellerPump />;
     default:
       return <GenericDiagram />;
   }
@@ -398,6 +406,67 @@ function PropellerPitch() {
         <div className="prop-blade">Pitch<br /><span>כמה המדחף “מתקדם” בסיבוב תאורטי</span></div>
       </div>
       <p className="diagram-note">Pitch גבוה מדי יכול להעמיס על המנוע; נמוך מדי יכול לגרום לסל״ד גבוה מדי.</p>
+    </DiagramFrame>
+  );
+}
+
+
+function ValveSystem() {
+  return (
+    <DiagramFrame title="שסתום / מגוף במערכת נוזלים">
+      <FlowRow items={[
+        { title: 'קו כניסה', note: 'נוזל מגיע בלחץ' },
+        { title: 'גוף השסתום', note: 'המסלול הפנימי של הנוזל' },
+        { title: 'אטימה', note: 'גלנד / אטם / חבל חלב' },
+        { title: 'גלגל יד', note: 'פותח וסוגר בהדרגה' },
+        { title: 'קו יציאה', note: 'זרימה רק כשהמעבר פתוח' }
+      ]} />
+      <p className="diagram-note">שסתום תקין לא רק פותח וסוגר; הוא גם צריך לאטום, לעמוד בחומר הזורם ולאפשר פתיחה מבוקרת.</p>
+    </DiagramFrame>
+  );
+}
+
+function PistonPumpSingleActing() {
+  return (
+    <DiagramFrame title="משאבת בוכנה חד־פעימתית">
+      <FlowRow items={[
+        { title: 'בוכנה נעה לאחור', note: 'הנפח גדל' },
+        { title: 'לחץ יורד', note: 'נוצר אזור יניקה' },
+        { title: 'שסתום יניקה נפתח', note: 'נוזל נכנס לצילינדר' },
+        { title: 'בוכנה נעה קדימה', note: 'הנפח קטן' },
+        { title: 'שסתום סניקה נפתח', note: 'נוזל נדחף החוצה' }
+      ]} />
+      <p className="diagram-note">במשאבה חד־פעימתית כל תנועת בוכנה עושה פעולה אחת בלבד: או יניקה או סניקה.</p>
+    </DiagramFrame>
+  );
+}
+
+function PistonPumpStates() {
+  return (
+    <DiagramFrame title="ניתוח מצבי משאבת בוכנה">
+      <FlowRow items={[
+        { title: 'כיוון תנועת הבוכנה', note: 'ימינה או שמאלה' },
+        { title: 'שינוי נפח', note: 'גדל או קטן' },
+        { title: 'שינוי לחץ', note: 'יורד או עולה' },
+        { title: 'מצב שסתומים', note: 'מי פתוח ומי סגור' },
+        { title: 'תהליך', note: 'יניקה או סניקה' }
+      ]} />
+      <p className="diagram-note">הטריק הוא לא לנחש. מתחילים מכיוון הבוכנה, מסיקים שינוי נפח, ואז יודעים איזה שסתום אמור להיפתח.</p>
+    </DiagramFrame>
+  );
+}
+
+function FlexibleImpellerPump() {
+  return (
+    <DiagramFrame title="משאבת אימפלור גומי כנפיים גמישות">
+      <FlowRow items={[
+        { title: 'כניסת מים', note: 'פתח יניקה' },
+        { title: 'אימפלור גומי', note: 'כנפיים מתקפלות ונפתחות' },
+        { title: 'מסרק / חצי סהר', note: 'יוצר שינוי נפח' },
+        { title: 'סניקה', note: 'הנוזל נדחף החוצה' },
+        { title: 'תחזוקה', note: 'לא מפעילים יבש; מחליפים כשנשחק' }
+      ]} />
+      <p className="diagram-note">המשאבה עובדת בגלל שינוי הנפח בין הכנפיים. עבודה ללא נוזל שורפת את הגומי מהר מאוד.</p>
     </DiagramFrame>
   );
 }

@@ -8,7 +8,7 @@ import { courseLessons } from '../data/courseLessons.js';
 import { modules } from '../data/modules.js';
 import { mathExercises } from '../data/mathExercises.js';
 
-export default function LessonsPage() {
+export default function LessonsPage({ progress }) {
   const [selectedModuleId, setSelectedModuleId] = useState('m0');
   const [selectedLessonId, setSelectedLessonId] = useState(courseLessons[0]?.id || '');
   const [revealedPractice, setRevealedPractice] = useState(false);
@@ -147,16 +147,19 @@ export default function LessonsPage() {
         <div className="lesson-module-buttons">
           {modules.map((module) => {
             const active = module.id === selectedModuleId;
+            const done = Boolean(progress?.completed?.[module.id]);
             const lessonCount = courseLessons.filter((lesson) => lesson.moduleId === module.id).length;
             return (
               <button
                 key={module.id}
-                className={`lesson-module-button ${active ? 'active' : ''}`}
+                className={`lesson-module-button ${active ? 'active' : ''} ${done ? 'done' : ''}`}
                 onClick={() => chooseModule(module.id)}
                 type="button"
+                title={done ? 'המודול סומן כהושלם. השיעורים עצמם לא מסומנים אוטומטית.' : undefined}
               >
+                {done && <span className="module-done-check"><CheckCircle2 size={15} /> מודול הושלם</span>}
                 <strong>{module.shortTitle}</strong>
-                <small>{lessonCount} שיעורים</small>
+                <small>{lessonCount} שיעורים במודול</small>
               </button>
             );
           })}

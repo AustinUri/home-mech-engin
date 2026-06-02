@@ -258,5 +258,75 @@ export const mathExercises = [
     unit: 'hp',
     answerHint: 'קודם kW, אחר כך המרה ל־hp.'
   }
-
+,
+{
+  "id": "ex-piston-pump-volume",
+  "lessonId": "l9-06-single-acting-piston-pump",
+  "moduleId": "m9",
+  "title": "תרגיל — נפח פעימה במשאבת בוכנה",
+  "type": "hydraulicPiston",
+  "given": [
+    "קוטר בוכנה: d = 40mm",
+    "מהלך בוכנה: L = 80mm"
+  ],
+  "find": "מצא את נפח הנוזל התאורטי שנדחף בפעימת סניקה אחת בסמ״ק.",
+  "formula": "V = π × (d² / 4) × L",
+  "solution": [
+    "ממירים: d = 0.04m, L = 0.08m",
+    "שטח בוכנה: A = π × 0.04² / 4 = 0.001257m²",
+    "נפח פעימה: V = 0.001257 × 0.08 = 0.0001005m³",
+    "ממירים לסמ״ק: 0.0001005 × 1,000,000 ≈ 100.5cc"
+  ],
+  "answer": "≈100.5cc",
+  "numericAnswer": 100.5,
+  "tolerance": 1,
+  "unit": "cc",
+  "answerHint": "חשב שטח בוכנה ואז הכפל במהלך. אל תשכח להמיר מ־m³ ל־cc."
+},
+{
+  "id": "ex-piston-pump-flow",
+  "lessonId": "l9-06-single-acting-piston-pump",
+  "moduleId": "m9",
+  "title": "תרגיל מתקדם — ספיקה תאורטית של משאבת בוכנה",
+  "type": "hydraulicPiston",
+  "given": [
+    "נפח פעימה: 100cc",
+    "מספר פעימות סניקה בדקה: 30",
+    "יעילות נפחית: 85%"
+  ],
+  "find": "מצא ספיקה מעשית בליטר לדקה.",
+  "formula": "Q = Vstroke × strokes/min × η",
+  "solution": [
+    "נפח תאורטי לדקה: 100cc × 30 = 3000cc/min",
+    "מחשבים יעילות: 3000 × 0.85 = 2550cc/min",
+    "ממירים לליטר: 2550cc = 2.55L/min"
+  ],
+  "answer": "2.55L/min",
+  "numericAnswer": 2.55,
+  "tolerance": 0.05,
+  "unit": "L/min",
+  "answerHint": "קודם נפח פעימה כפול פעימות בדקה, אחר כך יעילות, ואז המרה מ־cc לליטר."
+},
+{
+  "id": "ex-impeller-flow-loss",
+  "lessonId": "l7-06-flexible-impeller-pump",
+  "moduleId": "m7",
+  "title": "תרגיל — ירידת ספיקה במשאבת אימפלור שחוק",
+  "type": "propPitch",
+  "given": [
+    "ספיקה חדשה: 24L/min",
+    "אחרי בלאי המשאבה נותנת 15L/min"
+  ],
+  "find": "מצא בכמה אחוז ירדה הספיקה.",
+  "formula": "loss% = (new - worn) / new × 100",
+  "solution": [
+    "הפרש ספיקה: 24 - 15 = 9L/min",
+    "אחוז ירידה: 9 / 24 × 100 = 37.5%"
+  ],
+  "answer": "37.5%",
+  "numericAnswer": 37.5,
+  "tolerance": 0.5,
+  "unit": "%",
+  "answerHint": "השווה את ההפרש לספיקה המקורית, לא לספיקה השחוקה."
+}
 ];

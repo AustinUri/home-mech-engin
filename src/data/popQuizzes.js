@@ -194,7 +194,64 @@ export const popQuizBank = [
     ],
     answer: 0,
     explanation: 'קוד תקלה הוא התחלה של אבחון, לא הוכחה סופית שהחיישן עצמו מת.'
-  }
+  },
+{
+  "id": "pq-valve-purpose",
+  "topic": "הידראוליקה",
+  "difficulty": "בסיסי",
+  "type": "choice",
+  "question": "מה התפקיד הכי נכון של שסתום במערכת נוזלים?",
+  "options": [
+    "לפתוח, לסגור או לווסת זרימה",
+    "להגדיל את נפח המנוע",
+    "להחליף מצבר",
+    "להעלות סל״ד"
+  ],
+  "answer": 0,
+  "explanation": "שסתום שולט בזרימה ולעיתים גם מבודד חלקים במערכת לצורך בטיחות/תחזוקה."
+},
+{
+  "id": "pq-piston-pump-suction",
+  "topic": "הידראוליקה",
+  "difficulty": "בסיסי",
+  "type": "choice",
+  "question": "במשאבת בוכנה, מה גורם ליניקה?",
+  "options": [
+    "הגדלת נפח וירידת לחץ בחלל העבודה",
+    "הקטנת נפח ועליית לחץ",
+    "סגירת שני השסתומים",
+    "חימום הנוזל"
+  ],
+  "answer": 0,
+  "explanation": "כאשר הבוכנה מגדילה את נפח החלל, הלחץ יורד ונוזל נשאב פנימה."
+},
+{
+  "id": "pq-impeller-dry",
+  "topic": "סירות",
+  "difficulty": "תחזוקה",
+  "type": "choice",
+  "question": "מה הבעיה בהפעלת משאבת אימפלור גומי ללא מים?",
+  "options": [
+    "הכנפיים מתחממות ונשחקות עד שריפה/התפוררות",
+    "המשאבה מייצרת יותר לחץ טוב",
+    "זה רק מרעיש קצת",
+    "זה משפר קירור"
+  ],
+  "answer": 0,
+  "explanation": "אימפלור גומי חייב נוזל לקירור וסיכה. עבודה יבשה פוגעת בו מהר."
+},
+{
+  "id": "pq-piston-pump-volume",
+  "topic": "הידראוליקה",
+  "difficulty": "חישוב",
+  "type": "calc",
+  "question": "משאבת בוכנה מעבירה 80cc בכל פעימת סניקה ו־25 פעימות בדקה. מה הספיקה התאורטית בליטר לדקה?",
+  "formula": "Q=V×strokes",
+  "numericAnswer": 2,
+  "tolerance": 0.05,
+  "unit": "L/min",
+  "explanation": "80cc × 25 = 2000cc/min = 2L/min."
+}
 ];
 
 export const popQuizTopics = ['הכול', ...Array.from(new Set(popQuizBank.map((question) => question.topic)))];

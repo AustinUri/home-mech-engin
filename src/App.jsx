@@ -126,7 +126,7 @@ export default function App() {
             />
           )}
           {activePage === 'library' && <LibraryPage />}
-          {activePage === 'lessons' && <LessonsPage />}
+          {activePage === 'lessons' && <LessonsPage progress={progress} />}
           {activePage === 'formulas' && <FormulasPage />}
           {activePage === 'calculators' && <CalculatorsPage />}
           {activePage === 'tests' && <TestsPage progress={progress} onAnswer={answerQuestion} onSubmit={submitTest} onReset={resetTest} />}

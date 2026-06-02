@@ -4885,3 +4885,53 @@ textarea::placeholder {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* -----------------------------
+   Module completion must stay separate from lesson completion.
+   A completed module gets a green frame, but lesson buttons are not automatically completed.
+------------------------------ */
+.module-picker-card.done,
+.module-card.done,
+.lesson-module-button.done {
+  border-color: #22c55e !important;
+  background: linear-gradient(135deg, #f0fdf4, #ffffff) !important;
+  box-shadow: 0 14px 34px rgba(34,197,94,.16) !important;
+}
+
+.module-picker-card.done.active,
+.lesson-module-button.done.active {
+  border-color: #16a34a !important;
+  box-shadow:
+    inset 0 0 0 2px #16a34a,
+    0 16px 34px rgba(34,197,94,.18) !important;
+}
+
+.module-picker-card.done .module-picker-icon,
+.module-card.done .module-icon,
+.lesson-module-button.done .module-done-check {
+  background: #dcfce7 !important;
+  color: #166534 !important;
+  border-color: #86efac !important;
+}
+
+.module-done-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  margin-bottom: 7px;
+  border: 1px solid #86efac;
+  background: #dcfce7;
+  color: #166534;
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: .74rem;
+  font-weight: 900;
+}
+
+.lesson-module-button.done small::after {
+  content: ' · לא מסמן שיעורים אוטומטית';
+  color: #166534;
+  font-weight: 900;
+}

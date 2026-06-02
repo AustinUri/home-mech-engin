@@ -1,5 +1,15 @@
 // Trusted learning sources grouped as school books/resources.
 export const schoolBooks = [
+
+  {
+    category: 'חומר מחבר — משאבות ושסתומים',
+    links: [
+      { title: 'שסתומים — שאלות בנושא', url: '/school-library/valves-questions.docx', why: 'דף שאלות על תפקידי שסתום/מגוף, חלקים, אטימה, נוהל פתיחה ובדיקת אטימות.' },
+      { title: 'משאבת בוכנה — דף עבודה מס׳ 2', url: '/school-library/piston-pump-worksheet-2.docx', why: 'דף השלמות על שינוי נפח, יניקה, סניקה, בוכנה, צילינדר ושסתומים אל־חוזרים.' },
+      { title: 'משאבת בוכנה חד־פעימתית — ניתוח מצבים', url: '/school-library/single-acting-piston-pump-thinking.docx', why: 'תרגול חשיבה לפי איורים: כיוון תנועת בוכנה, יניקה, סניקה ומצב שסתומים.' },
+      { title: 'משאבת אימפלור גומי כנפיים גמישות — חומר מסכם', url: '/school-library/flexible-rubber-impeller-pump-summary.docx', why: 'סיכום על משאבת כנפיים גמישות: מבנה, מסרק, יניקה/סניקה, תחזוקה, שחיקה ואיסור עבודה ללא נוזל.' }
+    ]
+  },
   {
     category: 'פיזיקה, נוסחאות וחשיבה הנדסית',
     links: [

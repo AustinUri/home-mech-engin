@@ -2,6 +2,13 @@
 export const schoolBooks = [
 
   {
+    category: 'חומר מחבר — חשמל AC ומעגלים',
+    links: [
+      { title: 'תרגול עצמי שיעור מתוקשב 180326 — מעגלי AC', url: '/school-library/ac-practice-180326.pdf', why: 'דף תרגול על מעגלי AC: נגד, סליל, קבל, היגב קיבולי/השראותי, עכבה, הספק, גורם הספק וחישובי מעגלים.' }
+    ]
+  },
+
+  {
     category: 'חומר מחבר — משאבות ושסתומים',
     links: [
       { title: 'שסתומים — שאלות בנושא', url: '/school-library/valves-questions.docx', why: 'דף שאלות על תפקידי שסתום/מגוף, חלקים, אטימה, נוהל פתיחה ובדיקת אטימות.' },
@@ -15,6 +22,16 @@ export const schoolBooks = [
     links: [
       { title: 'OpenStax Physics', url: 'https://openstax.org/subjects/science', why: 'ספרי פיזיקה חינמיים ואמינים: כוח, אנרגיה, חום, חשמל ומעגלים.' },
       { title: 'Engineering ToolBox', url: 'https://www.engineeringtoolbox.com/', why: 'נוסחאות מעשיות: מומנט, הספק, יחס העברה, יחידות והמרות.' }
+    ]
+  },
+
+  {
+    category: 'קורסים וספרים רציניים — אלקטרוניקה ומגנטיות',
+    links: [
+      { title: 'All About Circuits — Textbook', url: 'https://www.allaboutcircuits.com/textbook/', why: 'ספר חינמי רחב בחשמל ואלקטרוניקה: DC, AC, מוליכים למחצה, דיודות, טרנזיסטורים, מגברי שרת ומעגלים.' },
+      { title: 'MIT OCW 6.002 — Circuits and Electronics', url: 'https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/', why: 'קורס אוניברסיטאי רציני במעגלים ואלקטרוניקה. מתאים אחרי שמבינים את הבסיס.' },
+      { title: 'OpenStax University Physics Volume 2', url: 'https://openstax.org/details/books/university-physics-volume-2', why: 'ספר פתוח לחשמל, מגנטיות, השראה, AC וגלים אלקטרומגנטיים.' },
+      { title: 'Khan Academy — Electrical Engineering', url: 'https://www.khanacademy.org/science/electrical-engineering', why: 'הסברים הדרגתיים למעגלים, רכיבים וחשיבה חשמלית לפני מעבר לחומר כבד.' }
     ]
   },
   {

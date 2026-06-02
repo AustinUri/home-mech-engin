@@ -328,5 +328,95 @@ export const mathExercises = [
   "tolerance": 0.5,
   "unit": "%",
   "answerHint": "השווה את ההפרש לספיקה המקורית, לא לספיקה השחוקה."
-}
+},
+
+  {
+    id: 'ex-ac-capacitive-reactance-180326',
+    lessonId: 'l2-07-ac-impedance-power-factor',
+    moduleId: 'm2',
+    title: 'תרגיל AC — חישוב היגב קיבולי',
+    type: 'ohmCircuit',
+    given: ['תדר: f = 500Hz', 'קבל: C = 8µF = 8×10⁻⁶F'],
+    find: 'חשב את ההיגב הקיבולי XC.',
+    formula: 'XC = 1 / (2πfC)',
+    solution: ['ממירים: C = 8×10⁻⁶F', 'מציבים: XC = 1 / (2π×500×8×10⁻⁶)', 'מקבלים: XC ≈ 39.8Ω'],
+    answer: '≈39.8Ω',
+    numericAnswer: 39.8,
+    tolerance: 0.5,
+    unit: 'Ω',
+    answerHint: 'אל תשכח להמיר µF ל־F לפני ההצבה.'
+  },
+  {
+    id: 'ex-ac-rc-series-impedance-180326',
+    lessonId: 'l2-07-ac-impedance-power-factor',
+    moduleId: 'm2',
+    title: 'תרגיל AC — עכבה במעגל R-C טורי',
+    type: 'ohmCircuit',
+    given: ['נגד: R = 20Ω', 'קבל: C = 8µF', 'תדר: f = 500Hz', 'היגב קיבולי מחושב: XC ≈ 39.8Ω'],
+    find: 'חשב את העכבה הכוללת Z.',
+    formula: 'Z = √(R² + XC²)',
+    solution: ['מציבים: Z = √(20² + 39.8²)', 'Z = √(400 + 1584)', 'מקבלים: Z ≈ 44.5Ω'],
+    answer: '≈44.5Ω',
+    numericAnswer: 44.5,
+    tolerance: 0.6,
+    unit: 'Ω',
+    answerHint: 'במעגל טורי R-C לא מחברים 20+39.8. משתמשים בשורש סכום ריבועים.'
+  },
+  {
+    id: 'ex-ac-power-factor-180326',
+    lessonId: 'l2-07-ac-impedance-power-factor',
+    moduleId: 'm2',
+    title: 'תרגיל AC — גורם הספק',
+    type: 'powerLoad',
+    given: ['R = 20Ω', 'Z ≈ 44.5Ω'],
+    find: 'חשב את גורם ההספק cosφ.',
+    formula: 'cosφ = R / Z',
+    solution: ['מציבים: cosφ = 20 / 44.5', 'מקבלים: cosφ ≈ 0.45', 'המעגל קיבולי כי יש בו קבל משמעותי.'],
+    answer: '≈0.45',
+    numericAnswer: 0.45,
+    tolerance: 0.03,
+    unit: '',
+    answerHint: 'גורם הספק במעגל R-C טורי: R חלקי Z.'
+  },
+  {
+    id: 'ex-ac-parallel-branch-current-180326',
+    lessonId: 'l2-06-ac-basics-reactance',
+    moduleId: 'm2',
+    title: 'תרגיל AC — זרם בענף קבל במקביל',
+    type: 'powerLoad',
+    given: ['מתח מקור: V = 75V', 'היגב קיבולי: XC = 25Ω'],
+    find: 'חשב את זרם הקבל IC.',
+    formula: 'IC = V / XC',
+    solution: ['במקביל המתח על הקבל הוא מתח המקור: 75V', 'מציבים: IC = 75 / 25', 'מקבלים: IC = 3A'],
+    answer: '3A',
+    numericAnswer: 3,
+    tolerance: 0.05,
+    unit: 'A',
+    answerHint: 'במעגל מקבילי כל ענף מקבל 75V.'
+  },
+  {
+    id: 'ex-dc-parallel-equivalent-180326',
+    lessonId: 'l2-03-series-parallel',
+    moduleId: 'm2',
+    title: 'תרגיל מעגלים — התנגדות שקולה בענפים מקבילים',
+    type: 'ohmCircuit',
+    given: ['ענף עליון: R4 = 6Ω', 'ענף אמצעי: R2 + R3 = 3Ω + 3Ω = 6Ω'],
+    find: 'חשב התנגדות שקולה של שני הענפים המקבילים.',
+    formula: 'Req = (Rtop × Rmid) / (Rtop + Rmid)',
+    solution: ['שני הענפים הם 6Ω ו־6Ω במקביל', 'Req = (6×6)/(6+6)', 'Req = 36/12 = 3Ω'],
+    answer: '3Ω',
+    numericAnswer: 3,
+    tolerance: 0.05,
+    unit: 'Ω',
+    answerHint: 'שני נגדים שווים של 6Ω במקביל נותנים 3Ω.'
+  }
+
+
+,
+  { id: 'ex-led-resistor-pro', lessonId: 'l11-03-diodes-led-zener', moduleId: 'm11', title: 'מתקדם — נגד הגנה ל־LED', type: 'powerLoad', given: ['Vs = 12V', 'Vf = 3.2V', 'I = 15mA = 0.015A'], find: 'חשב את נגד ההגנה הדרוש.', formula: 'R = (Vs - Vf) / I', solution: ['המתח על הנגד: 12 - 3.2 = 8.8V', 'R = 8.8 / 0.015', 'R ≈ 586.7Ω', 'בפועל בוחרים ערך סטנדרטי קרוב ומוודאים הספק.'], answer: '≈587Ω', numericAnswer: 586.7, tolerance: 3, unit: 'Ω', answerHint: 'אל תשכח להמיר 15mA ל־0.015A.' },
+  { id: 'ex-rc-cutoff-pro', lessonId: 'l11-04-rc-filters-noise', moduleId: 'm11', title: 'מתקדם — תדר חיתוך של מסנן RC', type: 'ohmCircuit', given: ['R = 10kΩ = 10000Ω', 'C = 100nF = 100×10⁻⁹F'], find: 'חשב את fc.', formula: 'fc = 1 / (2πRC)', solution: ['ממירים יחידות.', 'RC = 10000 × 100×10⁻⁹ = 0.001s', 'fc = 1/(2π×0.001)', 'fc ≈ 159Hz'], answer: '≈159Hz', numericAnswer: 159, tolerance: 2, unit: 'Hz', answerHint: 'הקושי הוא המרת nF ל־F.' },
+  { id: 'ex-kcl-node-pro', lessonId: 'l2-10-kirchhoff-serious', moduleId: 'm2', title: 'מתקדם — KCL בצומת עם שלושה ענפים', type: 'powerLoad', given: ['זרם נכנס לצומת: 8A', 'ענף 1: 2.5A', 'ענף 2: 3.2A'], find: 'מצא את הזרם בענף השלישי.', formula: 'Iin = I1 + I2 + I3', solution: ['I3 = Iin - I1 - I2', 'I3 = 8 - 2.5 - 3.2', 'I3 = 2.3A'], answer: '2.3A', numericAnswer: 2.3, tolerance: 0.05, unit: 'A', answerHint: 'מה שנכנס לצומת חייב לצאת.' },
+  { id: 'ex-voltage-divider-pro', lessonId: 'l2-09-circuit-types-serious', moduleId: 'm2', title: 'מתקדם — מחלק מתח', type: 'ohmCircuit', given: ['Vin = 12V', 'R1 = 3kΩ', 'R2 = 1kΩ', 'Vout נמדד על R2'], find: 'חשב Vout.', formula: 'Vout = Vin × R2/(R1+R2)', solution: ['R_total = 3kΩ + 1kΩ = 4kΩ', 'Vout = 12 × 1/4', 'Vout = 3V'], answer: '3V', numericAnswer: 3, tolerance: 0.05, unit: 'V', answerHint: 'המתח על R2 הוא החלק היחסי של R2 מתוך סכום הנגדים.' },
+  { id: 'ex-bjt-base-current-pro', lessonId: 'l11-05-bjt-opamp', moduleId: 'm11', title: 'מתקדם — זרם בסיס ב־BJT', type: 'relayCircuit', given: ['זרם עומס: IC = 300mA = 0.3A', 'β תאורטי = 100'], find: 'חשב IB תאורטי.', formula: 'IB = IC / β', solution: ['IB = 0.3 / 100', 'IB = 0.003A', 'IB = 3mA', 'במתג מעשי נותנים יותר כדי להבטיח רוויה.'], answer: '3mA', numericAnswer: 3, tolerance: 0.1, unit: 'mA', answerHint: 'חלק את זרם הקולקטור ב־β ואז המר ל־mA.' }
+
 ];

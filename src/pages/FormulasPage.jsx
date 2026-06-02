@@ -8,9 +8,10 @@ export default function FormulasPage() {
     <section className="page-stack">
       <PageTitle
         icon={NotebookPen}
-        title="חוקי יסוד ונוסחאות מוסברות"
-        subtitle="כאן לא רק רואים נוסחה. כל חוק כולל משמעות, יחידות, מתי משתמשים בו, דוגמה וטעות נפוצה."
+        title="חוקי יסוד ונוסחאות"
+        subtitle="כאן נמצאות הנוסחאות בלבד: חוקים, יחידות, שימושים ודוגמאות. הסברי המושגים העמוקים נמצאים בתוך שיעורים ותרגול."
       />
+
       {formulas.map((group) => (
         <section key={group.category}>
           <h3 className="section-heading">{group.category}</h3>

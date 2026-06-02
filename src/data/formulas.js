@@ -61,4 +61,18 @@ export const formulas = [
       { name: 'מהירות בוכנה ממוצעת', formula: 'Mean piston speed = 2 × stroke × rpm / 60', use: 'קירוב עומס מכני על מנוע לפי מהלך וסל״ד.', variables: 'stroke=meters' }
     ]
   }
+,
+  {
+    category: 'ניתוח מעגלים ואלקטרוניקה',
+    items: [
+      { name: 'חוק קירכהוף למתחים KVL', formula: 'ΣV = 0', use: 'סכום עליות ונפילות המתח בלולאה סגורה שווה לאפס.', variables: 'V=Voltage around a closed loop', meaning: 'אנרגיה חשמלית לא נעלמת בלולאה: המקור מוסיף מתח והרכיבים מפילים מתח.', units: 'Volt', when: 'משתמשים בזה במעגלים טוריים, מחלקי מתח ולולאות מורכבות.', example: 'מקור 12V ושני נגדים: אם על R1 נופלים 5V, על R2 יפלו 7V.', commonMistake: 'לחבר מתחים בלי סימן כיוון או בלי לבחור מסלול לולאה.' },
+      { name: 'חוק קירכהוף לזרמים KCL', formula: 'ΣI_in = ΣI_out', use: 'בצומת חשמלי, הזרם שנכנס שווה לזרם שיוצא.', variables: 'I=Current at a node', meaning: 'מטען חשמלי לא נעלם בצומת.', units: 'Ampere', when: 'משתמשים במעגלים מקביליים, ענפים וחיישנים.', example: 'אם נכנסים 5A וצד אחד לוקח 2A, הענף השני יקח 3A.', commonMistake: 'לחשוב שבמקביל הזרם זהה בכל ענף. במקביל המתח זהה, הזרם מתחלק.' },
+      { name: 'מחלק מתח', formula: 'Vout = Vin × R2 / (R1 + R2)', use: 'חישוב מתח יציאה בין שני נגדים בטור.', variables: 'Vin=Input voltage, Vout=Output voltage, R1/R2=Resistors', meaning: 'מתח מתחלק לפי יחס התנגדויות בטור.', units: 'Volt, Ohm', when: 'שימוש בחיישנים, מדידות, יצירת מתח ייחוס.', example: 'Vin=12V, R1=R2 → Vout=6V.', commonMistake: 'להעמיס את המחלק בצרכן שגורם לו כבר לא להתנהג כמחלק אידיאלי.' },
+      { name: 'תדר חיתוך RC', formula: 'fc = 1 / (2πRC)', use: 'התדר שבו מסנן RC מתחיל להחליש אות בצורה משמעותית.', variables: 'f=Frequency, R=Resistance, C=Capacitance', meaning: 'קובע אילו תדרים עוברים ואילו נחלשים.', units: 'Hz, Ohm, Farad', when: 'מסנני רעש, חיישנים, אותות אנלוגיים.', example: 'R=1kΩ, C=1µF → fc≈159Hz.', commonMistake: 'לא להמיר µF ל־F לפני חישוב.' },
+      { name: 'נגד הגנה ל־LED', formula: 'R = (Vs - Vf) / I', use: 'מגביל את הזרם דרך LED כדי שלא יישרף.', variables: 'Vs=Supply, Vf=LED forward voltage, I=LED current', meaning: 'הנגד “סופג” את המתח העודף ומכתיב זרם בטוח.', units: 'Ohm, Volt, Ampere', when: 'כל פעם שמחברים LED למקור מתח.', example: 'Vs=12V, Vf=2V, I=20mA → R=500Ω.', commonMistake: 'לחבר LED ישירות למצבר בלי נגד.' },
+      { name: 'זרם בסיס בטרנזיסטור BJT', formula: 'IB ≈ IC / β', use: 'הערכת זרם בסיס הדרוש להפעלת עומס דרך BJT.', variables: 'IB=Base current, IC=Collector current, β=Gain', meaning: 'זרם קטן בבסיס מאפשר לשלוט בזרם גדול יותר בקולקטור.', units: 'Ampere', when: 'תכנון טרנזיסטור כמתג לממסר/עומס קטן.', example: 'IC=200mA, β=50 → IB≈4mA, ובמתג מוסיפים מקדם ביטחון.', commonMistake: 'להניח ש־β קבוע תמיד; בתכנון מתג משתמשים ברוויה ומקדם ביטחון.' },
+      { name: 'חוק פאראדיי — השראה', formula: 'ε = -N × ΔΦ / Δt', use: 'מתח מושרה נוצר כאשר שטף מגנטי דרך סליל משתנה בזמן.', variables: 'ε=EMF, N=Turns, Φ=Magnetic flux, t=Time', meaning: 'שינוי שדה מגנטי יכול ליצור מתח חשמלי.', units: 'Volt, Weber, second', when: 'גנרטורים, אלטרנטורים, חיישני השראה, שנאים.', example: 'יותר ליפופים או שינוי שדה מהיר יותר יוצרים מתח מושרה גדול יותר.', commonMistake: 'לחשוב שמגנט קבוע ליד סליל מייצר מתח בלי תנועה/שינוי. צריך שינוי בשטף.' }
+    ]
+  }
+
 ];

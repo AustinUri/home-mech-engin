@@ -251,7 +251,46 @@ export const popQuizBank = [
   "tolerance": 0.05,
   "unit": "L/min",
   "explanation": "80cc × 25 = 2000cc/min = 2L/min."
-}
+},
+
+  {
+    id: 'pq-ac-xc-180326',
+    topic: 'חשמל בסיסי',
+    difficulty: 'מתקדם',
+    type: 'calc',
+    question: 'קבל של 8µF מחובר ל־AC בתדר 500Hz. מה בערך XC?',
+    formula: 'XC = 1/(2πfC)',
+    numericAnswer: 39.8,
+    tolerance: 0.6,
+    unit: 'Ω',
+    explanation: 'ממירים 8µF ל־8×10⁻⁶F ואז מציבים: XC≈39.8Ω.'
+  },
+  {
+    id: 'pq-ac-parallel-voltage',
+    topic: 'חשמל בסיסי',
+    difficulty: 'בסיסי',
+    type: 'choice',
+    question: 'במעגל מקבילי AC עם מקור 75V, מה המתח על כל ענף?',
+    options: ['75V', 'מתח שונה בכל ענף לפי ההתנגדות', '0V', 'תלוי רק בתדר'],
+    answer: 0,
+    explanation: 'במקביל כל ענף מחובר לאותן שתי נקודות, לכן המתח על כל ענף שווה למתח המקור.'
+  },
+  {
+    id: 'pq-ac-power-factor',
+    topic: 'חשמל בסיסי',
+    difficulty: 'מתקדם',
+    type: 'choice',
+    question: 'מה מודד גורם הספק במעגל AC?',
+    options: ['כמה מההספק הוא פעיל ביחס להספק המדומה', 'רק את המתח', 'רק את צבע החוט', 'את כמות השמן במשאבה'],
+    answer: 0,
+    explanation: 'גורם הספק מתאר את היחס בין הספק פעיל להספק מדומה, והוא מושפע מהמופע בין מתח לזרם.'
+  },
+  { id: 'pq-kvl-loop', topic: 'אלקטרוניקה ומגנטיות', difficulty: 'מתקדם', type: 'choice', question: 'מה אומר KVL בלולאה סגורה?', options: ['סכום עליות ונפילות המתח בלולאה שווה לאפס', 'הזרם תמיד אפס', 'ההתנגדות תמיד אינסופית', 'הקבל תמיד מוליך DC'], answer: 0, explanation: 'KVL נובע משימור אנרגיה: בלולאה סגורה סכום המתחים האלגברי הוא אפס.' },
+  { id: 'pq-led-resistor', topic: 'אלקטרוניקה ומגנטיות', difficulty: 'מתקדם', type: 'calc', question: 'LED: Vs=12V, Vf=2V, I=20mA. מה R?', formula: 'R=(Vs−Vf)/I', numericAnswer: 500, tolerance: 5, unit: 'Ω', explanation: 'R=(12−2)/0.02=500Ω.' },
+  { id: 'pq-rc-cutoff', topic: 'אלקטרוניקה ומגנטיות', difficulty: 'מתקדם', type: 'calc', question: 'R=10kΩ ו־C=100nF. מה fc בערך?', formula: 'fc=1/(2πRC)', numericAnswer: 159, tolerance: 3, unit: 'Hz', explanation: 'RC=0.001s ולכן fc≈159Hz.' },
+  { id: 'pq-faraday', topic: 'אלקטרוניקה ומגנטיות', difficulty: 'בסיסי', type: 'choice', question: 'מה יוצר מתח מושרה בסליל?', options: ['שינוי בשטף מגנטי', 'מגנט קבוע בלי תנועה או שינוי', 'נגד בטור בלבד', 'כפתור פלסטיק'], answer: 0, explanation: 'לפי חוק פאראדיי, שינוי שטף מגנטי בזמן גורם למתח מושרה.' },
+  { id: 'pq-relay-use', topic: 'אלקטרוניקה ומגנטיות', difficulty: 'בסיסי', type: 'choice', question: 'למה משתמשים בממסר?', options: ['כדי לשלוט בעומס זרם גבוה בעזרת זרם פיקוד נמוך', 'כדי להגדיל דלק', 'כדי למדוד לחץ שמן', 'כדי לקרר מנוע ישירות'], answer: 0, explanation: 'ממסר משתמש בסליל כדי להפעיל מגעים, וכך פיקוד קטן יכול לשלוט בזרם גבוה.' }
+
 ];
 
 export const popQuizTopics = ['הכול', ...Array.from(new Set(popQuizBank.map((question) => question.topic)))];

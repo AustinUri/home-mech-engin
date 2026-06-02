@@ -250,5 +250,38 @@ export const tests = [
       "unit": "L/min"
     }
   ]
-}
+},
+
+  {
+    id: 'ac-circuits-180326-test',
+    title: 'מבחן — מעגלי AC ועכבה 180326',
+    moduleId: 'm2',
+    description: 'שאלות המבוססות על דף התרגול של החבר: נגד, קבל, סליל, עכבה וגורם הספק.',
+    questions: [
+      { type: 'calc', id: 'q1', question: 'במעגל AC: f=500Hz, C=8µF. מה ההיגב הקיבולי XC?', formula: 'XC=1/(2πfC)', diagram: 'ohmCircuit', numericAnswer: 39.8, tolerance: 0.5, unit: 'Ω' },
+      { type: 'calc', id: 'q2', question: 'במעגל R-C טורי: R=20Ω ו־XC≈39.8Ω. מה העכבה Z?', formula: 'Z=√(R²+XC²)', diagram: 'ohmCircuit', numericAnswer: 44.5, tolerance: 0.6, unit: 'Ω' },
+      { type: 'calc', id: 'q3', question: 'זרם במעגל הוא 0.3A ונגד R=20Ω. מה קריאת מד מתח על הנגד?', formula: 'VR=I×R', diagram: 'powerLoad', numericAnswer: 6, tolerance: 0.1, unit: 'V' },
+      { type: 'choice', id: 'q4', question: 'במעגל עם קבל דומיננטי, איך מסווגים את המעגל?', options: ['קיבולי', 'השראותי', 'מכני', 'פתוח תמיד'], answer: 0 },
+      { type: 'calc', id: 'q5', question: 'במקביל: V=75V ו־R=15Ω. מה זרם הנגד?', formula: 'IR=V/R', diagram: 'powerLoad', numericAnswer: 5, tolerance: 0.05, unit: 'A' },
+      { type: 'calc', id: 'q6', question: 'במקביל: V=75V ו־XC=25Ω. מה זרם הקבל?', formula: 'IC=V/XC', diagram: 'powerLoad', numericAnswer: 3, tolerance: 0.05, unit: 'A' }
+    ]
+  }
+
+
+,
+  {
+    id: 'electronics-magnetism-pro-test',
+    title: 'מבחן — אלקטרוניקה ומגנטיות ברמה קדם־הנדסאית',
+    moduleId: 'm11',
+    description: 'מבחן על קירכהוף, מחלק מתח, LED, RC, BJT, ממסר והשראה. אין פה ניחושים — צריך להבין את הדרך.',
+    questions: [
+      { type: 'calc', id: 'q1', question: 'מחלק מתח: Vin=12V, R1=3kΩ, R2=1kΩ. מה Vout על R2?', formula: 'Vout=Vin×R2/(R1+R2)', diagram: 'ohmCircuit', numericAnswer: 3, tolerance: 0.05, unit: 'V' },
+      { type: 'calc', id: 'q2', question: 'LED: Vs=12V, Vf=2V, I=20mA. מה נגד ההגנה?', formula: 'R=(Vs−Vf)/I', diagram: 'powerLoad', numericAnswer: 500, tolerance: 5, unit: 'Ω' },
+      { type: 'calc', id: 'q3', question: 'מסנן RC: R=10kΩ, C=100nF. מה fc?', formula: 'fc=1/(2πRC)', diagram: 'ohmCircuit', numericAnswer: 159, tolerance: 3, unit: 'Hz' },
+      { type: 'choice', id: 'q4', question: 'לפי KCL, מה נכון בצומת?', options: ['הזרם הנכנס שווה לסכום הזרמים היוצאים', 'המתח תמיד אפס', 'התנגדות נעלמת', 'קבל הופך לסוללה'], answer: 0 },
+      { type: 'choice', id: 'q5', question: 'מה חייב לקרות כדי שתהיה השראה אלקטרומגנטית?', options: ['שינוי בשטף מגנטי בזמן', 'מגנט עומד ללא שינוי ליד סליל', 'חוט מנותק', 'פיוז שרוף'], answer: 0 },
+      { type: 'calc', id: 'q6', question: 'BJT: עומס 300mA ו־β=100. מה זרם הבסיס התאורטי במיליאמפר?', formula: 'IB=IC/β', diagram: 'relayCircuit', numericAnswer: 3, tolerance: 0.1, unit: 'mA' }
+    ]
+  }
+
 ];

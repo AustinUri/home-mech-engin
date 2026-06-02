@@ -4935,3 +4935,122 @@ textarea::placeholder {
   color: #166534;
   font-weight: 900;
 }
+
+/* Basic concept dictionary */
+.basic-concepts-intro {
+  padding: 24px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.98), rgba(248,250,252,.96)),
+    linear-gradient(rgba(30,64,175,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,64,175,.055) 1px, transparent 1px);
+  background-size: auto, 24px 24px, 24px 24px;
+}
+
+.basic-concepts-intro h3 {
+  margin: 12px 0 8px;
+  font-size: 1.6rem;
+}
+
+.basic-concepts-intro p,
+.section-heading-row p {
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.section-heading-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+
+.basic-concept-section {
+  display: grid;
+  gap: 14px;
+}
+
+.basic-concept-grid-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.basic-concept-card {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 18px;
+  background: #ffffff;
+  box-shadow: 0 14px 34px rgba(15,23,42,.07);
+}
+
+.basic-concept-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 120px;
+  gap: 16px;
+  align-items: start;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+}
+
+.basic-concept-card h4 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+}
+
+.basic-concept-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.concept-symbol-box {
+  border: 1px solid #bfdbfe;
+  background: linear-gradient(135deg, #eff6ff, #fff7ed);
+  border-radius: 18px;
+  padding: 12px;
+  text-align: center;
+}
+
+.concept-symbol-box strong {
+  display: block;
+  font-size: 1.5rem;
+  color: #1d4ed8;
+}
+
+.concept-symbol-box span {
+  display: block;
+  color: #475569;
+  font-weight: 800;
+  font-size: .85rem;
+  margin-top: 4px;
+}
+
+.basic-concept-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.basic-concept-grid > div {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 12px;
+  background: #f8fafc;
+}
+
+.basic-concept-grid strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.basic-concept-grid .concept-mistake {
+  background: #fff7ed;
+  border-color: #fdba74;
+}
+
+@media (max-width: 900px) {
+  .basic-concept-grid-list { grid-template-columns: 1fr; }
+  .basic-concept-head { grid-template-columns: 1fr; }
+}

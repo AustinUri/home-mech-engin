@@ -1,6 +1,7 @@
 // School-style math exercise diagrams.
 // The SVGs are intentionally simple: clear labels, clear arrows, and visible given values.
 export default function MathExerciseDiagram({ type }) {
+  if (type === 'noDiagram') return null;
   switch (type) {
     case 'ohmCircuit':
       return <OhmCircuit />;

@@ -12,7 +12,7 @@ export const formulas = [
       { name: 'קיבולת מצבר תאורטית', formula: 't = Ah / A', use: 'הערכת זמן עבודה לפי קיבולת וזרם.', variables: 't=Hours, Ah=Amp-hour, A=Current' },
       { name: 'נפילת מתח', formula: 'V_drop = I × R_wire', use: 'בדיקת הפסדי מתח בחוטים וחיבורים.', variables: 'V_drop=Voltage loss' },
       { name: 'חיבור נגדים בטור', formula: 'R_total = R1 + R2 + ...', use: 'חישוב התנגדות כוללת במעגל טורי.', variables: 'R=Resistance' },
-      { name: 'חיבור נגדים במקביל', formula: '1/R_total = 1/R1 + 1/R2 + ...', use: 'חישוב התנגדות כוללת במעגל מקבילי.', variables: 'R=Resistance' }
+      { name: 'חיבור נגדים במקביל', formula: '1 / R_total = 1 / R1 + 1 / R2 + ...', extraFormula: 'קיצור לשני נגדים בלבד: R_eq = (R1 × R2) / (R1 + R2)', use: 'חישוב התנגדות כוללת במעגל מקבילי. כשיש בדיוק שני נגדים במקביל אפשר להשתמש בקיצור המכפלה חלקי הסכום.', variables: 'Req, R1, R2 = Resistance in Ω' }
     ]
   },
   {
